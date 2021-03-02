@@ -68,9 +68,9 @@
                                         {{ __('Login') }}
                                     </button>
                                     @if (Route::has('register'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                    </li>
+                                    <a>
+                                        <a class="btn btn-secondary btn-user btn-bloc" style="color:white," href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    </a>
                                 @endif
 
                                     {{-- @if (Route::has('password.request'))
