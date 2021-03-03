@@ -117,7 +117,7 @@
               <div class="social">
                 <a href=""><i class="fa fa-twitter"></i></a>
                 <a href="https://www.facebook.com/profile.php?id=100009883663580"><i class="fa fa-facebook"></i></a>
-                <a href=""><i class="fa fa-google-plus"></i></a>
+                <a href="mailto:gundho20@gmail.com"><i class="fa fa-google-plus"></i></a>
                 <a href="https://www.instagram.com/miantoko_gundho/"><i class="fa fa-instagram"></i></a>
               </div>
             </div>
