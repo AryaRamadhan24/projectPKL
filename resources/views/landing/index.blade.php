@@ -77,6 +77,7 @@
                 <a href="https://www.facebook.com/kominfomalang/"><i class="fa fa-facebook"></i></a>
                 <a href="mailto:kominfo@malangkota.go.id"><i class="fa fa-google-plus"></i></a>
                 <a href="https://www.instagram.com/kominfomalang/"><i class="fa fa-instagram"></i></a>
+                <a href="https://wa.me/6281249572288"><i class="fa fa-whatsapp "></i></a>
               </div>
             </div>
           </div>
@@ -91,6 +92,7 @@
                 <a href="https://www.facebook.com/arya.ramadhan.5030"><i class="fa fa-facebook"></i></a>
                 <a href="mailto:182410102035@cs.unej.ac.id"><i class="fa fa-google-plus"></i></a>
                 <a href="https://www.instagram.com/aryaramadhan24/"><i class="fa fa-instagram"></i></a>
+                <a href="https://wa.me/628992727299"><i class="fa fa-whatsapp "></i></a>
               </div>
             </div>
           </div>
@@ -105,6 +107,7 @@
                 <a href="https://www.facebook.com/riefqhi.alhie"><i class="fa fa-facebook"></i></a>
                 <a href="mailto:saifurrifqi9@gmail.com"><i class="fa fa-google-plus"></i></a>
                 <a href="https://www.instagram.com/aliie_25/"><i class="fa fa-instagram"></i></a>
+                <a href="https://wa.me/628970666848"><i class="fa fa-whatsapp "></i></a>
               </div>
             </div>
           </div>
@@ -119,6 +122,7 @@
                 <a href="https://www.facebook.com/profile.php?id=100009883663580"><i class="fa fa-facebook"></i></a>
                 <a href="mailto:gundho20@gmail.com"><i class="fa fa-google-plus"></i></a>
                 <a href="https://www.instagram.com/miantoko_gundho/"><i class="fa fa-instagram"></i></a>
+                <a href="https://wa.me/62895360438041"><i class="fa fa-whatsapp "></i></a>
               </div>
             </div>
           </div>
