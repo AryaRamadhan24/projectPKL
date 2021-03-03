@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
     {{-- sbadmin2 --}}
     <!-- Custom fonts for this template-->
@@ -25,5 +25,5 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('sbadmin2/css/sb-admin-2.min.css')}}" rel="stylesheet">
-
-</head>
+{{--
+</head> --}}
