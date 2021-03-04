@@ -1,4 +1,10 @@
 @extends('layouts.css')
+
+<title>E-ARSIP</title>
+<!-- Favicons -->
+<link href="{{asset('Landingpage/img/favicon.png')}}" rel="icon">
+<link href="{{asset('Landingpage/img/favicon.png')}}" rel="appleicon">
+
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">

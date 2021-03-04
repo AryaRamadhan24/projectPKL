@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>E-ARSIP</title>
+    <title>E-ARSIP</title>
+    <!-- Favicons -->
+    <link href="{{asset('Landingpage/img/favicon.png')}}" rel="icon">
+    <link href="{{asset('Landingpage/img/favicon.png')}}" rel="appleicon">
+
     {{-- css --}}
     @include('layouts.css')
 </head>
