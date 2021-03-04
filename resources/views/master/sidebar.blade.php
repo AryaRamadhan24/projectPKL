@@ -36,9 +36,9 @@
         </a>
         <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{url('senar')}}">Kartu Tanda Penduduk</a>
-                <a class="collapse-item" href="{{url('ukuran')}}">Kartu Keluarga</a>
-                <a class="collapse-item" href="{{url('jenis')}}">Buku Nikah</a>
+                <a class="collapse-item" href="{{route('ktp')}}">Kartu Tanda Penduduk</a>
+                <a class="collapse-item" href="{{route('kk')}}">Kartu Keluarga</a>
+                <a class="collapse-item" href="{{route('bn')}}">Buku Nikah</a>
             </div>
         </div>
     </li>
