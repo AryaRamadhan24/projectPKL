@@ -157,7 +157,7 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a> --}}
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 @include('landing.js')
 
