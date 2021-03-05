@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->enum('level',['user','admin']);
             $table->string('TTL')->nullable();
             $table->string('Alamat')->nullable();
-            $table->string('No Telp')->nullable();
+            $table->string('No_Telp')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

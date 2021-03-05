@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use \App\User;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
 class profileController extends Controller
@@ -81,9 +82,10 @@ class profileController extends Controller
         // $validatedData = $request->validate([
         //     'password' => 'required|min:8',
         // ]);
-        $this->validate($request,[
+        $validation = \Validator::make($request->all(),[
             'password' => 'required|min:8',
-        ]);
+            'password_confirmation' => 'required_with:password|same:password|min:6'
+        ])->validate();
 
         if($request->input('password')!=$request->input('password_confirmation')){
             return redirect()->back()->with('alert','Password Tidak Sesuai');

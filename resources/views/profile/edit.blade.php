@@ -2,12 +2,12 @@
 @section('content')
 
 <body class="bg-gradient-light">
-    @if (session('alert'))
+    {{-- @if (session('alert'))
         <div class="alert alert-danger">
             <center>{{ session('alert') }}</center>
         </div>
-    @endif
-    @if (count($errors)>0)
+    @endif --}}
+    {{-- @if (count($errors)>0)
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -15,7 +15,7 @@
                 @endforeach
             </ul>
         </div>
-    @endif
+    @endif --}}
     @if (session('success'))
         <div class="alert alert-success">
             <center>{{ session('success') }}</center>
@@ -60,12 +60,18 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Password<input id="password" type="password" class="form-control form-control-user" name="password" required autocomplete="new-password" placeholder="Password">
+                                        Password<input id="password" type="password" class="form-control form-control-user {{$errors->first('password') ? "is-invalid" : ""}}" name="password" required autocomplete="new-password" placeholder="Password">
+                                        <div class="invalid-feedback">
+                                            {{$errors->first('password')}}
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Retype Password<input id="password-confirm" type="password" class="form-control form-control-user" name="password_confirmation" required autocomplete="new-password" placeholder="Repeat Password">
+                                        Retype Password<input id="password-confirm" type="password" class="form-control form-control-user {{$errors->first('password_confirmation') ? "is-invalid" : ""}}" name="password_confirmation" required autocomplete="new-password" placeholder="Repeat Password">
+                                        <div class="invalid-feedback">
+                                            {{$errors->first('password_confirmation')}}
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
