@@ -33,3 +33,7 @@ Route::get('/kartukeluarga', 'kkController@index' )->name('kk');
 
 // Buku Nikah
 Route::get('/bukunikah', 'bnController@index')->name('bn');
+
+//Profile
+Route::get('/editprofile', 'profileController@index')->name('editprofile');
+Route::post('/updateprofile/{id}','profileController@update')->name('updateprofile');

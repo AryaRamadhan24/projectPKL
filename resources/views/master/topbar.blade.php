@@ -24,7 +24,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{ route('loginview') }}">
+                                <a class="dropdown-item" href="{{ route('editprofile') }}">
                                  {{ __('Edit Profile') }}
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
