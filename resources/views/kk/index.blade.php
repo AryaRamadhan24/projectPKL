@@ -7,7 +7,7 @@
         <div class="card-header py-3">
         {{-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> --}}
         <div class="col-lg-2">
-            <a href="#" class="btn btn-outline-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Input KTP</a>
+            <a href="{{route('addkk')}}" class="btn btn-outline-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Input KK</a>
         </div>
         </div>
         <div class="card-body">

@@ -10,4 +10,9 @@ class ktpController extends Controller
     {
         return view('ktp.index');
     }
+
+    public function add()
+    {
+        return view('ktp.tambah');
+    }
 }

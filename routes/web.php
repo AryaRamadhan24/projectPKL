@@ -25,14 +25,17 @@ Route::get('/loginview', 'HomeController@loginview')->name('loginview');
 
 // KTP
 Route::get('/ktp', 'ktpController@index')->name('ktp');
+Route::get('/ktp/tambah', 'ktpController@add')->name('addktp');
 
 
 // Kartu Keluarga
 Route::get('/kartukeluarga', 'kkController@index' )->name('kk');
+Route::get('/kartukeluarga/tambah', 'kkController@add')->name('addkk');
 
 
 // Buku Nikah
 Route::get('/bukunikah', 'bnController@index')->name('bn');
+Route::get('/bukunikah/tambah', 'kkController@add')->name('addbn');
 
 //Profile
 Route::get('/editprofile', 'profileController@index')->name('editprofile');

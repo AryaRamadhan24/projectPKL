@@ -10,4 +10,9 @@ class kkController extends Controller
     {
         return view('kk.index');
     }
+
+    public function add()
+    {
+        return view('kk.tambah');
+    }
 }

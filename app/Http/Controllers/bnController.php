@@ -21,9 +21,9 @@ class bnController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add()
     {
-        //
+        return view('bukunikah.tambah');
     }
 
     /**
