@@ -46,7 +46,12 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    TTL<input id="name" type="text" class="form-control form-control-user" placeholder="Tempat Tanggal Lahir" name="TTL" value="" required autocomplete="name">
+                                    Tempat Lahir<input id="name" type="text" class="form-control form-control-user" placeholder="Tempat Tanggal Lahir" name="TTL" value="" required autocomplete="name">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-3 mb-sm-0">
+                                    Tanggal Lahir<input id="name" type="date" class="form-control form-control-user" placeholder="Tempat Tanggal Lahir" name="TTL" value="" required autocomplete="name">
                                 </div>
                             </div>
                             <div class="form-group row">

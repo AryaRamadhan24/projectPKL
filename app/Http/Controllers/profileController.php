@@ -21,7 +21,7 @@ class profileController extends Controller
         $user = auth()->user()->id;
         $userData = DB::table('users')
         ->where('id', '=', $user)
-        ->select('id','name','email','password','TTL','Alamat','No_Telp')
+        ->select('id','name','email','password','Tempat_Lahir','Tanggal_Lahir','Alamat','No_Telp')
         ->get();
 
         return view('profile.edit',compact('userData'));
@@ -94,7 +94,8 @@ class profileController extends Controller
         $dataUser = \App\User::where('id',$id)->first();
         $dataUser->name = $request->input('name');
         $dataUser->email = $request->input('email');
-        $dataUser->TTL = $request->input('TTL');
+        $dataUser->Tempat_Lahir = $request->input('Tempat_Lahir');
+        $dataUser->Tanggal_Lahir = $request->input('Tanggal_Lahir');
         $dataUser->Alamat = $request->input('Alamat');
         $dataUser->No_Telp = $request->input('No_Telp');
         $dataUser->password = bcrypt($request->input('password'));

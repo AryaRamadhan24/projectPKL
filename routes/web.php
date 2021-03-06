@@ -35,7 +35,7 @@ Route::get('/kartukeluarga/tambah', 'kkController@add')->name('addkk');
 
 // Buku Nikah
 Route::get('/bukunikah', 'bnController@index')->name('bn');
-Route::get('/bukunikah/tambah', 'kkController@add')->name('addbn');
+Route::get('/bukunikah/tambah', 'bnController@add')->name('addbn');
 
 //Profile
 Route::get('/editprofile', 'profileController@index')->name('editprofile');

@@ -32,67 +32,41 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Input Kartu Keluarga</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Input Buku Nikah</h1>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    No KK<input id="name" type="text" class="form-control form-control-user" placeholder="No KK" name="No KK" value="" required autocomplete="name">
+                                    Nomor Akta Nikah<input id="name" type="text" class="form-control form-control-user" placeholder="Nomor Akta Nikah" name="NAN" value="" required autocomplete="name">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    NIK<input id="name" type="text" class="form-control form-control-user" placeholder="NIK" name="NIK" value="" required autocomplete="name">
+                                    Hari Menikah<input id="name" type="text" class="form-control form-control-user" placeholder="Hari Menikah" name="Hari" value="" required autocomplete="name">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Nama<input id="name" type="text" class="form-control form-control-user" placeholder="Nama" name="name" value="" required autocomplete="name">
+                                    Tanggal Menikah<input id="name" type="date" class="form-control form-control-user" placeholder="Nama" name="Tgl Menikah" value="" required autocomplete="name">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    TTL<input id="name" type="text" class="form-control form-control-user" placeholder="Tempat Tanggal Lahir" name="TTL" value="" required autocomplete="name">
+                                    Nama Suami<input id="name" type="text" class="form-control form-control-user" placeholder="Nama Suami" name="Suami" value="" required autocomplete="name">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Jenis Kelamin<input id="name" type="text" class="form-control form-control-user" name="Jenis Kelamin" value="" required autocomplete="name" placeholder="Jenis Kelamin">
+                                    Nama Istri<input id="name" type="text" class="form-control form-control-user" name="Istri" value="" required autocomplete="name" placeholder="Nama Istri">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Alamat<input id="name" type="text" class="form-control form-control-user" name="Alamat" value="" required autocomplete="name"
-                                        placeholder="Alamat">
+                                        Scan Gambar Buku Nikah Suami<input id="name" type="file" class="form-control form-control-user" placeholder="Scan Gambar" name="Gambar" value="" required autocomplete="name">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Agama<input id="name" type="text" class="form-control form-control-user" placeholder="Agama" name="Agama" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Status Perkawinan<input id="name" type="text" class="form-control form-control-user" placeholder="Status Perkawinan" name="Status Perkawinan" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Pekerjaan<input id="name" type="text" class="form-control form-control-user" placeholder="Pekerjaan" name="Pekerjaan" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Kewarganegaraan<input id="name" type="text" class="form-control form-control-user" placeholder="Kewarganegaraan" name="Kewarganegaraan" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Masa Berlaku<input id="name" type="text" class="form-control form-control-user" placeholder="Masa Berlaku" name="Masa Berlaku" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Scan Gambar<input id="name" type="file" class="form-control form-control-user" placeholder="Scan Gambar" name="Gambar" value="" required autocomplete="name">
+                                        Scan Gambar Buku Nikah Istri<input id="name" type="file" class="form-control form-control-user" placeholder="Scan Gambar" name="Gambar" value="" required autocomplete="name">
                                 </div>
                             </div>
                             <div class="form-group">

@@ -26,7 +26,9 @@
             {{--end topbar --}}
 
             <!-- Main Content -->
+            <div style="padding-top:100px;">
             @yield('content')
+            </div>
             <!--end Main Content -->
 
             <!-- Footer -->

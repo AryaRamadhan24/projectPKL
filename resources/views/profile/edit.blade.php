@@ -46,7 +46,12 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                        TTL<input id="name" type="text" class="form-control form-control-user" placeholder="Tempat Tanggal Lahir" name="TTL" value="{{$item->TTL}}" required autocomplete="name">
+                                        Tempat Lahir<input id="name" type="text" class="form-control form-control-user" placeholder="Tempat Lahir" name="Tempat_Lahir" value="{{$item->Tempat_Lahir}}" required autocomplete="name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                        Tanggal Lahir<input id="name" type="date" class="form-control form-control-user" placeholder="Tanggal Lahir" name="Tanggal_Lahir" value="{{$item->Tanggal_Lahir}}" required autocomplete="name">
                                     </div>
                                 </div>
                                 <div class="form-group">
