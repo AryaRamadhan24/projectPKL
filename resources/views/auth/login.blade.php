@@ -11,9 +11,9 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 E-ARSIP
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
-            </button>
+            </button> --}}
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
@@ -22,15 +22,16 @@
             </div>
         </div>
     </div>
-<body class="bg-gradient-light">
-<div class="container">
+
+<body style="background-image: url(https://farm5.staticflickr.com/4340/36400422205_1f196452d0_o.png); background-color:rgba(0,0,0,0); background-repeat:no-repeat; background-size:100% 100%;" >
+    <div class="container">
 
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
         <div class="col-xl-10 col-lg-12 col-md-9">
 
-            <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card o-hidden border-0 shadow-lg my-5" style="background-color: rgba(255, 255, 255, 0.7)">
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
                     <div class="row">

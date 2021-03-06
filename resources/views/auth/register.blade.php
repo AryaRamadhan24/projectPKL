@@ -22,9 +22,9 @@
             </div>
         </div>
     </div>
-<body class="bg-gradient-light">
+<body style="background-image: url(https://farm5.staticflickr.com/4340/36400422205_1f196452d0_o.png); background-repeat:no-repeat; background-size:100% 100%;">
     <div class="container">
-        <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card o-hidden border-0 shadow-lg my-5" style="background-color: rgba(255, 255, 255, 0.7)">
             <div class="card-body p-0">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
@@ -42,10 +42,6 @@
                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                         <input id="name" type="text" class="form-control form-control-user" placeholder="Name" name="name" value="{{ old('name') }}" required autocomplete="name">
                                     </div>
-                                    {{-- <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
-                                    </div> --}}
                                 </div>
                                 <div class="form-group">
                                     <input id="email" type="email" class="form-control form-control-user" name="email" value="{{ old('email') }}" required autocomplete="email"
