@@ -14,6 +14,24 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+section {
+   width: 100%;
+   height: 100%;
+   background: url(https://farm5.staticflickr.com/4340/36400422205_1f196452d0_o.png);
+   background-size: 100% 100% ;
+   overflow: hidden;
+   position: fixed;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:rgba(0, 0, 0, 0.6);
+}
+
 a {
   color: #2dc997;
 }
