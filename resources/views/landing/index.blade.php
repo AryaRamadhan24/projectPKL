@@ -70,7 +70,7 @@
           <div class="col-lg-3 col-md-6">
             <div class="member" data-aos="fade-up" data-aos-delay="100">
               <div class="pic"><img src="{{asset('Landingpage/img/Kominfo.jpg')}}" alt=""></div>
-              <h4>Tri D.S</h4>
+              <h4>Tri Darmawan S.</h4>
               <span>Pembimbing</span>
               <div class="social">
                 <a href="https://twitter.com/KominfoMalang?s=20"><i class="fa fa-twitter"></i></a>
