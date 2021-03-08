@@ -40,3 +40,13 @@ Route::get('/bukunikah/tambah', 'bnController@add')->name('addbn');
 //Profile
 Route::get('/editprofile', 'profileController@index')->name('editprofile');
 Route::post('/updateprofile/{id}','profileController@update')->name('updateprofile');
+
+
+//user
+Route::get('/useradmin', 'UserController@indexadmin')->name('useradmin');
+Route::get('/userpetugas', 'UserController@indexpetugas')->name('userpetugas');
+Route::get('/createuser', 'UserController@create')->name('createuser');
+Route::post('/adduser', 'UserController@store')->name('adduser');
+Route::get('/deleteuser/{id}', 'UserController@destroy')->name('deleteuser');
+Route::get('/edituser/{id}', 'UserController@edit')->name('edituser');
+Route::post('/updateuser/{id}', 'UserController@update')->name('updateuser');

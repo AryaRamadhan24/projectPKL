@@ -84,7 +84,7 @@ class profileController extends Controller
         // ]);
         $validation = \Validator::make($request->all(),[
             'password' => 'required|min:8',
-            'password_confirmation' => 'required_with:password|same:password|min:6'
+            'password_confirmation' => 'required_with:password|same:password|min:8'
         ])->validate();
 
         if($request->input('password')!=$request->input('password_confirmation')){

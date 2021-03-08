@@ -66,13 +66,14 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-user"></i>
-            <span>Data user</span>
+            <span>Data User</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">User:</h6>
-                <a class="collapse-item" href="login.html">Data Petugas</a>
-                <a class="collapse-item" href="register.html">Data Admin</a>
+                <a class="collapse-item" href="{{route('userpetugas') }}">Data Petugas</a>
+                <a class="collapse-item" href="{{ route('useradmin') }}">Data Admin</a>
+                <a class="collapse-item" href="{{route('createuser') }}">Tambah User</a>
             </div>
         </div>
     </li>
