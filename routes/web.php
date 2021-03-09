@@ -25,7 +25,11 @@ Route::get('/loginview', 'HomeController@loginview')->name('loginview');
 
 // KTP
 Route::get('/ktp', 'ktpController@index')->name('ktp');
-Route::get('/ktp/tambah', 'ktpController@add')->name('addktp');
+Route::get('/ktp/tambah', 'ktpController@add')->name('addktpview');
+Route::post('/addktp','ktpController@store')->name('addktp');
+Route::get('/editktp/{id}', 'ktpController@edit')->name('editktp');
+Route::post('/updatektp/{id}', 'ktpController@update')->name('updatektp');
+Route::get('/deletektp/{id}', 'ktpController@destroy')->name('deletektp');
 
 
 // Kartu Keluarga
