@@ -2,7 +2,7 @@
         <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar" style="z-index: 2;">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('home')}}">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-file-archive"></i>
                 </div>
@@ -44,7 +44,7 @@
     </li>
 
     <!-- Nav Item - Pages Collapse Menu Tambah Senar -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-history"></i>
@@ -53,11 +53,10 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="cards.html">File Upload</a>
-                {{-- <a class="collapse-item" href="cards.html">File Download</a> --}}
             </div>
         </div>
-    </li>
-    @if (auth::user()->level=='admin')
+    </li> --}}
+    @if (auth::user()->level=='admin' or auth::user()->level=='petugas')
     <!-- Heading -->
     <div class="sidebar-heading">
         Data
@@ -71,9 +70,28 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">User:</h6>
+                @if (auth::user()->level=='admin')
                 <a class="collapse-item" href="{{route('userpetugas') }}">Data Petugas</a>
                 <a class="collapse-item" href="{{ route('useradmin') }}">Data Admin</a>
+                @endif
+                <a class="collapse-item" href="{{ route('userwarga') }}">Data Warga</a>
                 <a class="collapse-item" href="{{route('createuser') }}">Tambah User</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
+            aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-globe-asia"></i>
+            <span>Data Daerah</span>
+        </a>
+        <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Daerah:</h6>                
+                <a class="collapse-item" href="{{route('userpetugas') }}">Data Kecamatan</a>
+                <a class="collapse-item" href="{{ route('useradmin') }}">Data Desa</a>
+                <a class="collapse-item" href="{{ route('userwarga') }}">Data Dusun</a>
+                <a class="collapse-item" href="{{ route('userwarga') }}">Data RT/RW</a>
             </div>
         </div>
     </li>

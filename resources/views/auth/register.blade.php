@@ -39,6 +39,25 @@
 
                             <form class="user">
                                 <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <span>Kecamatan</span>
+                                        <select id="kecamatan" class="form-control form-control-user" name="kecamatan" required autocomplete="kecamatan">
+                                             <option value="" selected disabled>
+                                                ==Pilih Kecamatan==
+                                            </option>
+                                            @foreach ($kecamatan as $id=>$name)
+                                            <option value="{{$id}}">
+                                                {{$name}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <span>Desa</span>
+                                        <select id="desa" class="form-control form-control-user" name="desa" autocomplete="desa"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                         <input id="name" type="text" class="form-control form-control-user" placeholder="Name" name="name" value="{{ old('name') }}" required autocomplete="name">
                                     </div>
@@ -63,17 +82,8 @@
                                     </div>
                                 </div>
                                 <hr>
-                                {{-- <a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a> --}}
                             </form>
                             <hr>
-                            {{-- <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div> --}}
                             <div class="text-center">
                                 <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
                             </div>
@@ -85,5 +95,29 @@
     </div>
 </div>
 </section>
+<script src="http://code.jquery.com/jquery-3.4.1.js"></script>
+        
+<script>
+            $(document).ready(function () {
+            $('#kecamatan').on('change', function () {
+            let id = $(this).val();
+            $('#desa').empty();
+            $('#desa').append(`<option value="0" disabled selected>Processing...</option>`);
+            $.ajax({
+            type: 'GET',
+            url: 'register/daftardesa/' + id,
+            success: function (response) {
+            var response = JSON.parse(response);
+            console.log(response);   
+            $('#desa').empty();
+            $('#desa').append(`<option value="0" disabled selected>==Pilih Desa==</option>`);
+            response.forEach(element => {
+                $('#desa').append(`<option value="${element['id_desa']}">${element['nama_desa']}</option>`);
+                });
+            }
+        });
+    });
+});
+</script>
 </body>
 @extends('layouts.js')

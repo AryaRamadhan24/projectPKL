@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use \App\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
+use App\kecamatan;
 
 class UserController extends Controller
 {
@@ -20,8 +21,9 @@ class UserController extends Controller
     {
         // $user = auth()->user()->id;
         $userData = DB::table('users')
-        ->where('level', '=', 'admin')
-        ->select('id','name','email','Tempat_Lahir','Tanggal_Lahir','Alamat','No_Telp')
+        ->join('desas','users.desa_id','=','desas.id_desa')
+        ->where('users.level', '=', 'admin')
+        ->select('users.id_user','users.name','users.email','users.Tempat_Lahir','users.Tanggal_Lahir','users.Alamat','users.No_Telp','desas.nama_desa')
         ->get();
 
         return view('user.indexadmin', compact('userData'));
@@ -31,11 +33,24 @@ class UserController extends Controller
     {
         // $user = auth()->user()->id;
         $userData = DB::table('users')
-        ->where('level', '=', 'user')
-        ->select('id','name','email','Tempat_Lahir','Tanggal_Lahir','Alamat','No_Telp')
+        ->join('desas','users.desa_id','=','desas.id_desa')
+        ->where('users.level', '=', 'petugas')
+        ->select('users.id_user','users.name','users.email','users.Tempat_Lahir','users.Tanggal_Lahir','users.Alamat','users.No_Telp','desas.nama_desa')
         ->get();
 
         return view('user.indexpetugas',compact('userData'));
+    }
+
+    public function indexuser()
+    {
+        // $user = auth()->user()->id;
+        $userData = DB::table('users')
+        ->join('desas','users.desa_id','=','desas.id_desa')
+        ->where('users.level', '=', 'user')
+        ->select('users.id_user','users.name','users.email','users.Tempat_Lahir','users.Tanggal_Lahir','users.Alamat','users.No_Telp','desas.nama_desa')
+        ->get();
+
+        return view('user.indexuser',compact('userData'));
     }
 
     /**
@@ -45,7 +60,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.createuser');
+
+        $kecamatan=kecamatan::pluck('nama_kecamatan','id_kecamatan');
+
+        return view('user.createuser',['kecamatan' => $kecamatan]);
     }
 
     /**
@@ -69,6 +87,7 @@ class UserController extends Controller
         $data->name = $request->input('name');
         $data->email= $request->input('email');
         $data->level= $request->input('level');
+        $data->desa_id= $request->input('desa');
         $data->password = Hash::make($request->input('password'));
         $data->save();
 

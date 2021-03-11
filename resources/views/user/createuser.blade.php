@@ -32,9 +32,31 @@
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">Level
                                         <select name="level" id="" class="form-control form-control-user">
-                                            <option value="admin">Admin</option>
-                                            <option value="user">Petugas</option>
+                                            @if (auth::user()->level=='admin')
+                                                <option value="admin">Admin</option>
+                                                <option value="petugas">Petugas</option>
+                                            @endif
+                                            <option value="user">User</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <span>Kecamatan</span>
+                                        <select id="kecamatan" class="form-control form-control-user" name="kecamatan" required autocomplete="kecamatan">
+                                             <option value="" selected disabled>
+                                                ==Pilih Kecamatan==
+                                            </option>
+                                            @foreach ($kecamatan as $id=>$name)
+                                            <option value="{{$id}}">
+                                                {{$name}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <span>Desa</span>
+                                        <select id="desa" class="form-control form-control-user" name="desa" autocomplete="desa"></select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -76,7 +98,30 @@
         </div>
 
     </div>
-
+    <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
+        
+    <script>
+                $(document).ready(function () {
+                $('#kecamatan').on('change', function () {
+                let id = $(this).val();
+                $('#desa').empty();
+                $('#desa').append(`<option value="0" disabled selected>Processing...</option>`);
+                $.ajax({
+                type: 'GET',
+                url: 'register/daftardesa/' + id,
+                success: function (response) {
+                var response = JSON.parse(response);
+                console.log(response);   
+                $('#desa').empty();
+                $('#desa').append(`<option value="0" disabled selected>==Pilih Desa==</option>`);
+                response.forEach(element => {
+                    $('#desa').append(`<option value="${element['id_desa']}">${element['nama_desa']}</option>`);
+                    });
+                }
+            });
+        });
+    });
+    </script>
 </body>
 
 @endsection

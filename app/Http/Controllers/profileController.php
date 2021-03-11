@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use \App\User;
+use App\desa;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
@@ -113,5 +114,10 @@ class profileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function desa($id)
+    {
+        echo json_encode(DB::table('desas')->where('kecamatan_id',$id)->get());
     }
 }

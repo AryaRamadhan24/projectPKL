@@ -8,7 +8,7 @@
         </div>
         <div class="card-body">
             <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Daftar Admin</h1>
+                <h1 class="h4 text-gray-900 mb-4">Daftar Warga</h1>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -39,7 +39,7 @@
                             <td>
                                 <a href="{{ route('edituser', ['id'=>$item->id_user]) }}"><div class="btn btn-outline-warning btn-rounded btn-sm"><i class="fas fa-pencil-alt"></i></div></a>
                                 @if (Auth::user()->id!=$item->id_user)
-                                <a href="{{  route('deleteuser', ['id'=>$item->id_user]) }}"><div class="btn btn-outline-danger btn-rounded btn-sm"><i class="fa fa-trash"></i></div></a>
+                                <a href="{{ route('deleteuser', ['id'=>$item->id_user]) }}"><div class="btn btn-outline-danger btn-rounded btn-sm"><i class="fa fa-trash"></i></div></a>
                                 @endif
                             </td>
                         </tr>

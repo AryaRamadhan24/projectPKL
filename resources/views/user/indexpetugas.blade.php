@@ -20,12 +20,13 @@
                             <th>Tanggal Lahir</th>
                             <th>Alamat</th>
                             <th>Nomor Telepon</th>
+                            <th>Desa</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($userData as $item)
-                        <tr @if (Auth::user()->id==$item->id)
+                        <tr @if (Auth::user()->id==$item->id_user)
                             style="color:blue;"
                         @endif>
                             <td>{{ $item->name }}</td>
@@ -34,10 +35,11 @@
                             <td>{{ $item->Tanggal_Lahir }}</td>
                             <td>{{ $item->Alamat }}</td>
                             <td>{{ $item->No_Telp }}</td>
+                            <td>{{ $item->nama_desa }}</td>
                             <td>
-                                <a href="{{ route('edituser', ['id'=>$item->id]) }}"><div class="btn btn-outline-warning btn-rounded btn-sm"><i class="fas fa-pencil-alt"></i></div></a>
-                                @if (Auth::user()->id!=$item->id)
-                                <a href="{{ route('deleteuser', ['id'=>$item->id]) }}"><div class="btn btn-outline-danger btn-rounded btn-sm"><i class="fa fa-trash"></i></div></a>
+                                <a href="{{ route('edituser', ['id'=>$item->id_user]) }}"><div class="btn btn-outline-warning btn-rounded btn-sm"><i class="fas fa-pencil-alt"></i></div></a>
+                                @if (Auth::user()->id!=$item->id_user)
+                                <a href="{{ route('deleteuser', ['id'=>$item->id_user]) }}"><div class="btn btn-outline-danger btn-rounded btn-sm"><i class="fa fa-trash"></i></div></a>
                                 @endif
                             </td>
                         </tr>

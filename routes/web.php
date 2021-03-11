@@ -23,6 +23,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/loginview', 'HomeController@loginview')->name('loginview');
 
+//register
+Route::get('register/daftardesa/{id}', 'profileController@desa')->name('daftardesa');
+
 // KTP
 Route::get('/ktp', 'ktpController@index')->name('ktp');
 Route::get('/ktp/tambah', 'ktpController@add')->name('addktpview');
@@ -49,6 +52,7 @@ Route::post('/updateprofile/{id}','profileController@update')->name('updateprofi
 //user
 Route::get('/useradmin', 'UserController@indexadmin')->name('useradmin');
 Route::get('/userpetugas', 'UserController@indexpetugas')->name('userpetugas');
+Route::get('/userwarga', 'UserController@indexuser')->name('userwarga');
 Route::get('/createuser', 'UserController@create')->name('createuser');
 Route::post('/adduser', 'UserController@store')->name('adduser');
 Route::get('/deleteuser/{id}', 'UserController@destroy')->name('deleteuser');
