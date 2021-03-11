@@ -40,7 +40,7 @@
                             <form class="user">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <span>Kecamatan</span>
+                                        {{-- <span>Kecamatan</span> --}}
                                         <select id="kecamatan" class="form-control form-control-user" name="kecamatan" required autocomplete="kecamatan">
                                              <option value="" selected disabled>
                                                 ==Pilih Kecamatan==
@@ -53,7 +53,7 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-6">
-                                        <span>Desa</span>
+                                        {{-- <span>Desa</span> --}}
                                         <select id="desa" class="form-control form-control-user" name="desa" autocomplete="desa"></select>
                                     </div>
                                 </div>
