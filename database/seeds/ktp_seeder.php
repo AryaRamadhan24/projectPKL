@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ktp extends Seeder
+class ktp_seeder extends Seeder
 {
     /**
      * Run the database seeds.

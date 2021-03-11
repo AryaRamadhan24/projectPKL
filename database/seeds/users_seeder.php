@@ -17,6 +17,7 @@ class users_seeder extends Seeder
             'email'=>'saifurrifqi9@gmail.com',
             'password'=>bcrypt('Ali102033'),
             'level'=>'admin',
+            'desa_id'=>'1',
             'remember_token'	=> NULL,
             'created_at'      => \Carbon\Carbon::now(),
             'updated_at'      => \Carbon\Carbon::now()
@@ -27,6 +28,7 @@ class users_seeder extends Seeder
             'email'=>'182410102035@gmail.com',
             'password'=>bcrypt('Arya2035'),
             'level'=>'user',
+            'desa_id'=>'1',
             'remember_token'	=> NULL,
             'created_at'      => \Carbon\Carbon::now(),
             'updated_at'      => \Carbon\Carbon::now()
