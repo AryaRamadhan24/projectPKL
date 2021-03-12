@@ -25,7 +25,7 @@
         <div class="card o-hidden border-0 shadow-lg my-2">
             <div class="card-body p-0">
                 @foreach ($userData as $item)
-                <form method="POST" action="{{ route('updateprofile',['id' => $item->id]) }}">
+                <form method="POST" action="{{ route('updateprofile',['id' => $item->id_user]) }}">
                     @csrf
                 <!-- Nested Row within Card Body -->
                 <div class="row">

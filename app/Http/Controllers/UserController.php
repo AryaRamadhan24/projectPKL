@@ -91,7 +91,7 @@ class UserController extends Controller
         $data->password = Hash::make($request->input('password'));
         $data->save();
 
-        return redirect()->route('createuser',['data' => $request])->with('success','Data Berhasil diperbarui');
+        return redirect()->route('createuser',['data' => $request])->with('success','Akun Berhasil Dibuat');
     }
 
     /**
@@ -113,12 +113,14 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $kecamatan=kecamatan::pluck('nama_kecamatan','id_kecamatan');
+
         $userData = DB::table('users')
-        ->where('id', '=', $id)
-        ->select('id','name','email','Tempat_Lahir','Tanggal_Lahir','Alamat','No_Telp')
+        ->where('id_user', '=', $id)
+        ->select('id_user','name','email','Tempat_Lahir','Tanggal_Lahir','desa_id','Alamat','No_Telp')
         ->get();
 
-        return view('user.edituser', compact('userData'));
+        return view ('user.edituser',['kecamatan' => $kecamatan], compact('userData'));
     }
 
     /**
@@ -130,29 +132,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $validatedData = $request->validate([
-        //     'password' => 'required|min:8',
-        // ]);
-        // $validation = \Validator::make($request->all(),[
-        //     'password' => 'required|min:8',
-        //     'password_confirmation' => 'required_with:password|same:password|min:8'
-        // ])->validate();
 
-        // if($request->input('password')!=$request->input('password_confirmation')){
-        //     return redirect()->back()->with('alert','Password Tidak Sesuai');
-        // }
-
-        $dataUser = \App\User::where('id',$id)->first();
+        $dataUser = \App\User::where('id_user',$id)->first();
         $dataUser->name = $request->input('name');
         $dataUser->email = $request->input('email');
         $dataUser->Tempat_Lahir = $request->input('Tempat_Lahir');
         $dataUser->Tanggal_Lahir = $request->input('Tanggal_Lahir');
+        $dataUser->desa_id = $request->input('desa');
         $dataUser->Alamat = $request->input('Alamat');
         $dataUser->No_Telp = $request->input('No_Telp');
         // $dataUser->password = bcrypt($request->input('password'));
         $dataUser->save();
 
-        return redirect()->route('edituser',['id'=>$id])->with('success','Data Berhasil diperbarui');
+        return redirect()->route('edituser',['id_user'=>$id])->with('success','Data Berhasil diperbarui');
     }
 
     /**

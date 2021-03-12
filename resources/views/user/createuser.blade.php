@@ -44,7 +44,7 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <span>Kecamatan</span>
                                         <select id="kecamatan" class="form-control form-control-user" name="kecamatan" required autocomplete="kecamatan">
-                                             <option value="" selected disabled>
+                                            <option value="" selected disabled>
                                                 ==Pilih Kecamatan==
                                             </option>
                                             @foreach ($kecamatan as $id=>$name)
@@ -99,7 +99,7 @@
 
     </div>
     <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
-        
+
     <script>
                 $(document).ready(function () {
                 $('#kecamatan').on('change', function () {
@@ -111,7 +111,7 @@
                 url: 'register/daftardesa/' + id,
                 success: function (response) {
                 var response = JSON.parse(response);
-                console.log(response);   
+                console.log(response);
                 $('#desa').empty();
                 $('#desa').append(`<option value="0" disabled selected>==Pilih Desa==</option>`);
                 response.forEach(element => {

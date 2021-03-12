@@ -19,10 +19,10 @@ class profileController extends Controller
      */
     public function index()
     {
-        $user = auth()->user()->id;
+        $user = auth()->user()->id_user;
         $userData = DB::table('users')
-        ->where('id', '=', $user)
-        ->select('id','name','email','password','Tempat_Lahir','Tanggal_Lahir','Alamat','No_Telp')
+        ->where('id_user', '=', $user)
+        ->select('id_user','name','email','password','Tempat_Lahir','Tanggal_Lahir','Alamat','No_Telp')
         ->get();
 
         return view('profile.edit',compact('userData'));
@@ -92,7 +92,7 @@ class profileController extends Controller
             return redirect()->back()->with('alert','Password Tidak Sesuai');
         }
 
-        $dataUser = \App\User::where('id',$id)->first();
+        $dataUser = \App\User::where('id_user',$id)->first();
         $dataUser->name = $request->input('name');
         $dataUser->email = $request->input('email');
         $dataUser->Tempat_Lahir = $request->input('Tempat_Lahir');

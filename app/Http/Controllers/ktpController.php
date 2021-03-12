@@ -10,8 +10,8 @@ class ktpController extends Controller
 {
     public function index()
     {
-        $data = DB::table('ktp')
-        ->select('id','nama','nik','Tanggal_Lahir','Jenis_Kelamin','Alamat','agama')
+        $data = DB::table('ktps')
+        ->select('NIK','nama','Tanggal_Lahir','Jenis_Kelamin','agama')
         ->get();
 
         return view('ktp.index',compact('data'));
@@ -24,8 +24,8 @@ class ktpController extends Controller
 
     public function edit($id)
     {
-        $data = DB::table('ktp')
-        ->where('id', '=', $id)
+        $data = DB::table('ktps')
+        ->where('NIK', '=', $id)
         ->get();
 
         return view('ktp.edit',compact('data'));
