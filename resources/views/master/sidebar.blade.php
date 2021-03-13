@@ -21,6 +21,7 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
+    @if (auth::user()->level=='petugas' or auth::user()->level=='user')
 
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -36,27 +37,27 @@
         </a>
         <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{route('addktpview')}}">Kartu Tanda Penduduk</a>
+                <a class="collapse-item" href="{{route('addkk')}}">Kartu Keluarga</a>
+                <a class="collapse-item" href="{{route('addbn')}}">Buku Nikah</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#abc"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-upload"></i>
+            <span>Verifikasi</span>
+        </a>
+        <div id="abc" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('ktp')}}">Kartu Tanda Penduduk</a>
                 <a class="collapse-item" href="{{route('kk')}}">Kartu Keluarga</a>
                 <a class="collapse-item" href="{{route('bn')}}">Buku Nikah</a>
             </div>
         </div>
     </li>
-
-    <!-- Nav Item - Pages Collapse Menu Tambah Senar -->
-    {{-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-history"></i>
-            <span>History</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="cards.html">File Upload</a>
-            </div>
-        </div>
-    </li> --}}
-    @if (auth::user()->level=='admin' or auth::user()->level=='petugas')
+    @elseif (auth::user()->level=='admin' or auth::user()->level=='petugas')
     <!-- Heading -->
     <div class="sidebar-heading">
         Data
@@ -87,7 +88,7 @@
         </a>
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Daerah:</h6>                
+                <h6 class="collapse-header">Daerah:</h6>
                 <a class="collapse-item" href="{{route('userpetugas') }}">Data Kecamatan</a>
                 <a class="collapse-item" href="{{ route('useradmin') }}">Data Desa</a>
                 <a class="collapse-item" href="{{ route('userwarga') }}">Data Dusun</a>
