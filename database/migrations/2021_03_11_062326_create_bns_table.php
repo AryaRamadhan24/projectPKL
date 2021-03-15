@@ -16,11 +16,15 @@ class CreateBnsTable extends Migration
         Schema::create('bns', function (Blueprint $table) {
             $table->bigInteger('no_buku')->unsigned();
             $table->primary('no_buku');
-            $table->date('Tanggal_Menikah');
-            $table->string('Nama_Ayah');
-            $table->string('Status');
-            $table->bigInteger('no_NIK')->unsigned();
-            $table->foreign('no_NIK')->references('NIK')->on('ktps');
+            // $table->date('Tanggal_Menikah');
+            // $table->string('Nama_Ayah');
+            // $table->string('Status');
+            // $table->bigInteger('no_NIK')->unsigned();
+            // $table->foreign('no_NIK')->references('NIK')->on('ktps');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id_user')->on('users');
+            $table->enum('status',['proses','valid','tidak valid'])->default('proses');
+            $table->text('pesan')->default('-');
             $table->timestamps();
         });
     }

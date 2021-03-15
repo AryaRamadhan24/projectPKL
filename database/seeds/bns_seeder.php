@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class kecamatans_seeder extends Seeder
+class bns_seeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,8 +12,9 @@ class kecamatans_seeder extends Seeder
      */
     public function run()
     {
-        DB::table('kecamatans')->insert([
-            'nama_kecamatan' => 'Dampit',
+        DB::table('bns')->insert([
+            'no_buku' => '3677395',
+            'user_id' => '2',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
