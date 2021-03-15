@@ -21,7 +21,7 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
-    @if (auth::user()->level=='petugas' or auth::user()->level=='user')
+    @if (auth::user()->level=='user' or auth::user()->level=='petugas')
 
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -43,6 +43,8 @@
             </div>
         </div>
     </li>
+    @endif
+    @if (auth::user()->level=='petugas')
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#abc"
             aria-expanded="true" aria-controls="collapseTwo">
@@ -108,12 +110,7 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-            <!-- Sidebar Message -->
-            {{-- <div class="sidebar-card">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div> --}}
+
 
         </ul>
         <!-- End of Sidebar -->

@@ -42,26 +42,6 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Unggahan
-                            </div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-cloud-upload-alt fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
@@ -84,7 +64,7 @@
                 </div>
             </div>
         </div>
-        <!-- Pending Requests Card Example -->        
+        <!-- Pending Requests Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
@@ -93,7 +73,7 @@
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Jumlah Arsip</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                {{ $arsip->count() }}
+                                {{ $arsip }}
                             </div>
                         </div>
                         <div class="col-auto">
@@ -137,7 +117,7 @@
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Jumlah Arsip</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                {{ $arsip->count() }}
+                                {{ $arsip }}
                             </div>
                         </div>
                         <div class="col-auto">
@@ -181,7 +161,7 @@
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Jumlah Arsip</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                {{ $arsip->count() }}
+                                {{ $arsip }}
                             </div>
                         </div>
                         <div class="col-auto">
@@ -195,72 +175,157 @@
     @endif
     {{-- table --}}
     <!-- DataTales Example -->
+
+    @if(Auth::user()->level=='user' or Auth::user()->level=='petugas')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Data Tables Upload</h6>
+        </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Kartu Keluarga</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered display" id="dataTable2" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Nomor Kartu Keluarga</th>
+                            <th>Status</th>
+                            <th>Pesan</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @if (Auth::user()->level=='user')
+                        @foreach($kk as $item)
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
+                            <td>{{$item->no_kk}}</td>
+                            <td @if ($item->status=="valid")
+                                style="color:green;"
+                                @elseif ($item->status=="tidak valid")
+                                style="color:red;"
+                            @endif>{{$item->status}}</td>
+                            <td>{{$item->pesan}}</td>
                         </tr>
+                        @endforeach
+                        @elseif (Auth::user()->level=='petugas')
+                        @foreach($kk_petugas as $item)
                         <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                            <td>2011/07/25</td>
-                            <td>$170,750</td>
+                            <td>{{$item->no_kk}}</td>
+                            <td @if ($item->status=="valid")
+                                style="color:green;"
+                                @elseif ($item->status=="tidak valid")
+                                style="color:red;"
+                            @endif>{{$item->status}}</td>
+                            <td>{{$item->pesan}}</td>
                         </tr>
-                        <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                            <td>66</td>
-                            <td>2009/01/12</td>
-                            <td>$86,000</td>
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                            <td>2012/03/29</td>
-                            <td>$433,060</td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                            <td>2008/11/28</td>
-                            <td>$162,700</td>
-                        </tr>
+                        @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
         </div>
-
     </div>
-    {{-- end table --}}
-    <!-- end Page Content -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data KTP</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered display" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>NIK</th>
+                            <th>Status</th>
+                            <th>Pesan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Auth::user()->level=='user')
+                        @foreach($ktp as $item)
+                        <tr>
+                            <td>{{$item->NIK}}</td>
+                            <td @if ($item->status=="valid")
+                                style="color:green;"
+                                @elseif ($item->status=="tidak valid")
+                                style="color:red;"
+                            @endif>{{$item->status}}</td>
+                            <td>{{$item->pesan}}</td>
+                        </tr>
+                        @endforeach
+                        @elseif (Auth::user()->level=='petugas')
+                        @foreach($ktp_petugas as $item)
+                        <tr>
+                            <td>{{$item->NIK}}</td>
+                            <td @if ($item->status=="valid")
+                                style="color:green;"
+                                @elseif ($item->status=="tidak valid")
+                                style="color:red;"
+                            @endif>{{$item->status}}</td>
+                            <td>{{$item->pesan}}</td>
+                        </tr>
+                        @endforeach
+                        @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Buku Nikah</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered display" id="dataTable3" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nomor Buku Nikah</th>
+                            <th>Status</th>
+                            <th>Pesan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Auth::user()->level=='user')
+                        @foreach($bn as $item)
+                        <tr>
+                            <td>{{$item->no_buku}}</td>
+                            <td @if ($item->status=="valid")
+                                style="color:green;"
+                                @elseif ($item->status=="tidak valid")
+                                style="color:red;"
+                            @endif>{{$item->status}}</td>
+                            <td>{{$item->pesan}}</td>
+                        </tr>
+                        @endforeach
+                        @elseif (Auth::user()->level=='petugas')
+                        @foreach($bn_petugas as $item)
+                        <tr>
+                            <td>{{$item->no_buku}}</td>
+                            <td @if ($item->status=="valid")
+                                style="color:green;"
+                                @elseif ($item->status=="tidak valid")
+                                style="color:red;"
+                            @endif>{{$item->status}}</td>
+                            <td>{{$item->pesan}}</td>
+                        </tr>
+                        @endforeach
+                        @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @endif
 </div>
 
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('table.display').DataTable();
+} );
+</script>

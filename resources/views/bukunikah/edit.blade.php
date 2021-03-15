@@ -25,18 +25,18 @@
         <div class="card o-hidden border-0 shadow-lg my-2">
             <div class="card-body p-0">
                 @foreach ($data as $item)
-                <form method="POST" action="{{ route('verifyktp',['id'=>$item->NIK]) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('verifybn',['id'=>$item->no_buku]) }}" enctype="multipart/form-data">
                     @csrf
                 <!-- Nested Row within Card Body -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Verifikasi KTP</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Verifikasi Buku Nikah</h1>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    NIK<input id="name" type="text" class="form-control form-control-user" placeholder="NIK" name="NIK" value="{{ $item->NIK }}" readonly autocomplete="name">
+                                    Nomor Buku Nikah<input id="name" type="text" class="form-control form-control-user" placeholder="Nomor Buku Nikah" name="no_buku" value="{{ $item->no_buku }}" readonly autocomplete="name">
                                 </div>
                             </div>
                             <div class="form-group row">

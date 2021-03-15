@@ -25,7 +25,7 @@
         <div class="card o-hidden border-0 shadow-lg my-2">
             <div class="card-body p-0">
                 {{-- @foreach ($userData as $item) --}}
-                <form method="POST" action="">
+                <form method="POST" action="{{ route('storebn') }}" enctype="multipart/form-data">
                     @csrf
                 <!-- Nested Row within Card Body -->
                 <div class="row">
@@ -36,27 +36,20 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Nomor Akta Nikah<input id="name" type="text" class="form-control form-control-user" placeholder="Nomor Akta Nikah" name="NAN" value="" required autocomplete="name">
+                                    Nomor Akta Nikah<input id="name" type="text" class="form-control form-control-user  {{$errors->first('no_buku') ? "is-invalid" : ""}}" placeholder="Nomor Akta Nikah" name="no_buku" value="" required autocomplete="name">
+                                    <div class="invalid-feedback">
+                                        {{$errors->first('no_buku')}}
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Hari Menikah<input id="name" type="text" class="form-control form-control-user" placeholder="Hari Menikah" name="Hari" value="" required autocomplete="name">
+                                    Nama Suami<input id="name" type="text" class="form-control form-control-user" placeholder="Nama" name="name" value="" readonly autocomplete="name">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Tanggal Menikah<input id="name" type="date" class="form-control form-control-user" placeholder="Nama" name="Tgl Menikah" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Nama Suami<input id="name" type="text" class="form-control form-control-user" placeholder="Nama Suami" name="Suami" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Nama Istri<input id="name" type="text" class="form-control form-control-user" name="Istri" value="" required autocomplete="name" placeholder="Nama Istri">
+                                    Nama Istri<input id="name" type="text" class="form-control form-control-user" placeholder="Nama" name="name" value="" readonly autocomplete="name">
                                 </div>
                             </div>
                             <div class="form-group row">

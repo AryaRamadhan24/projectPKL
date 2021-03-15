@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\bn;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class bnController extends Controller
 {
@@ -13,7 +16,12 @@ class bnController extends Controller
      */
     public function index()
     {
-        return view('bukunikah.index');
+        $data = DB::table('bns')
+        // ->select('NIK','nama','Tanggal_Lahir','Jenis_Kelamin','agama')
+        ->where('status','proses')
+        ->select('no_buku')
+        ->get();
+        return view('bukunikah.index',compact('data'));
     }
 
     /**
@@ -34,7 +42,15 @@ class bnController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = \Validator::make($request->all(),[
+            'no_buku' => 'required|numeric|digits:7',
+        ])->validate();
+
+        $data=new \App\bn;
+        $data->no_buku = $request->input('no_buku');
+        $data->user_id = Auth::user()->id_user;
+        $data->save();
+        return redirect()->route('kk', ['data' => $request])->with('success','Data Berhasil ditambahkan');
     }
 
     /**
@@ -56,7 +72,11 @@ class bnController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('bns')
+        ->where('no_buku', '=', $id)
+        ->get();
+
+        return view('bukunikah.edit',compact('data'));
     }
 
     /**
@@ -79,6 +99,31 @@ class bnController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = bn::findOrFail($id);
+        $data->delete();
+
+        return redirect()->route('bn');
+    }
+    public function verify(Request $request, $id)
+    {
+        switch ($request->input('action')) {
+            case 'valid':
+                $data = \App\bn::where('no_buku',$id)->first();
+                $data->status = 'valid';
+                $data->pesan = $request->input('pesan');
+
+                $data->save();
+                break;
+
+            case 'notvalid':
+                $data = \App\bn::where('no_buku',$id)->first();
+                $data->status = 'tidak valid';
+                $data->pesan = $request->input('pesan');
+
+                $data->save();
+                break;
+        }
+
+        return redirect()->route('bn');
     }
 }

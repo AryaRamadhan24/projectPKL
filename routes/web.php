@@ -33,16 +33,28 @@ Route::post('/addktp','ktpController@store')->name('addktp');
 Route::get('/editktp/{id}', 'ktpController@edit')->name('editktp');
 Route::post('/updatektp/{id}', 'ktpController@update')->name('updatektp');
 Route::get('/deletektp/{id}', 'ktpController@destroy')->name('deletektp');
+Route::post('/verifyktp/{id}', 'ktpController@verify')->name('verifyktp');
 
 
 // Kartu Keluarga
 Route::get('/kartukeluarga', 'kkController@index' )->name('kk');
 Route::get('/kartukeluarga/tambah', 'kkController@add')->name('addkk');
+Route::post('/kartukeluarga/addkk', 'kkController@store')->name('storekk');
+Route::get('/editkk/{id}', 'kkController@edit')->name('editkk');
+Route::post('/updatekk/{id}', 'kkController@update')->name('updatekk');
+Route::get('/deletekk/{id}', 'kkController@destroy')->name('deletekk');
+Route::post('/verifykk/{id}', 'kkController@verify')->name('verifykk');
 
 
 // Buku Nikah
 Route::get('/bukunikah', 'bnController@index')->name('bn');
 Route::get('/bukunikah/tambah', 'bnController@add')->name('addbn');
+Route::post('/bukunikah/addbn', 'bnController@store')->name('storebn');
+Route::get('/editbn/{id}', 'bnController@edit')->name('editbn');
+Route::post('/updatebn/{id}', 'bnController@update')->name('updatebn');
+Route::get('/deletebn/{id}', 'bnController@destroy')->name('deletebn');
+Route::post('/verifybn/{id}', 'bnController@verify')->name('verifybn');
+
 
 //Profile
 Route::get('/editprofile', 'profileController@index')->name('editprofile');

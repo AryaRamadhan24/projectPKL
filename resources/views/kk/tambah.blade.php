@@ -25,7 +25,7 @@
         <div class="card o-hidden border-0 shadow-lg my-2">
             <div class="card-body p-0">
                 {{-- @foreach ($userData as $item) --}}
-                <form method="POST" action="">
+                <form method="POST" action="{{ route('storekk') }}" enctype="multipart/form-data">
                     @csrf
                 <!-- Nested Row within Card Body -->
                 <div class="row">
@@ -36,78 +36,15 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    No KK<input id="name" type="text" class="form-control form-control-user" placeholder="No KK" name="No KK" value="" required autocomplete="name">
+                                    No KK<input id="name" type="text" class="form-control form-control-user {{$errors->first('no_kk') ? "is-invalid" : ""}}" placeholder="No KK" name="no_kk" value="" required autocomplete="name">
+                                    <div class="invalid-feedback">
+                                        {{$errors->first('no_kk')}}
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    NIK<input id="name" type="text" class="form-control form-control-user" placeholder="NIK" name="NIK" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Nama<input id="name" type="text" class="form-control form-control-user" placeholder="Nama" name="name" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Tempat Lahir<input id="name" type="text" class="form-control form-control-user" placeholder="Tempat Tanggal Lahir" name="TTL" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Tanggal Lahir<input id="name" type="date" class="form-control form-control-user" placeholder="Tempat Tanggal Lahir" name="TTL" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Jenis Kelamin<input id="name" type="text" class="form-control form-control-user" name="Jenis Kelamin" value="" required autocomplete="name" placeholder="Jenis Kelamin">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Alamat<input id="name" type="text" class="form-control form-control-user" name="Alamat" value="" required autocomplete="name"
-                                        placeholder="Alamat">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Agama<input id="name" type="text" class="form-control form-control-user" placeholder="Agama" name="Agama" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Pendidikan<input id="name" type="text" class="form-control form-control-user" placeholder="Pendidikan" name="Pendidikan" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Status Perkawinan<input id="name" type="text" class="form-control form-control-user" placeholder="Status Perkawinan" name="Status Perkawinan" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Status Dalam Keluarga<input id="name" type="text" class="form-control form-control-user" placeholder="Status dalam Keluarga" name="Status dalam Keluarga" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Pekerjaan<input id="name" type="text" class="form-control form-control-user" placeholder="Pekerjaan" name="Pekerjaan" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Kewarganegaraan<input id="name" type="text" class="form-control form-control-user" placeholder="Kewarganegaraan" name="Kewarganegaraan" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Nama Ayah<input id="name" type="text" class="form-control form-control-user" placeholder="Nama Ayah" name="Nama Ayah" value="" required autocomplete="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Nama Ibu<input id="name" type="text" class="form-control form-control-user" placeholder="Nama Ibu" name="Nama Ibu" value="" required autocomplete="name">
+                                    Nama Kepala Keluarga<input id="name" type="text" class="form-control form-control-user" placeholder="Nama" name="name" value="" readonly autocomplete="name">
                                 </div>
                             </div>
                             <div class="form-group row">
