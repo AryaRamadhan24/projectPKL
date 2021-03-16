@@ -179,7 +179,7 @@
     @if(Auth::user()->level=='user' or Auth::user()->level=='petugas')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Data Tables Upload</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Data Table Terverifikasi</h6>
         </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -228,7 +228,7 @@
     </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Data KTP</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Data Kartu Tanda Penduduk</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">

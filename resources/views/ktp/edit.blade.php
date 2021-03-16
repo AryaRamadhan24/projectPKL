@@ -41,6 +41,11 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
+                                    Gambar Saat Ini<a href="" class="form-control form-control-user"><i class="fas fa-eye"> Tampilkan Gambar</i></a>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-3 mb-sm-0">
                                     Pesan<input id="name" type="text" class="form-control form-control-user" placeholder="Pesan" name="pesan" required autocomplete="name">
                                 </div>
                             </div>

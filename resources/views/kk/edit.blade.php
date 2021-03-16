@@ -41,6 +41,11 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
+                                    Gambar Saat Ini<a href="" class="form-control form-control-user"><i class="fas fa-eye"> Tampilkan Gambar</i></a>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-3 mb-sm-0">
                                     Pesan<input id="name" type="text" class="form-control form-control-user" placeholder="Pesan" name="pesan" required autocomplete="name">
                                 </div>
                             </div>
@@ -157,11 +162,6 @@
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
                                         Masa Berlaku<input id="name" type="text" class="form-control form-control-user" placeholder="Masa Berlaku" name="MasaBerlaku" value="{{ $item->masa_berlaku }}" required autocomplete="name">
-                                </div>
-                            </div> --}}
-                            {{-- <div class="form-group row">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Gambar Saat Ini<a href="/gambarKTP/{{ $item->gambar }}" class="form-control form-control-user">Klik untuk lihat gambar</a>
                                 </div>
                             </div> --}}
                             {{-- <div class="form-group row">
