@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Nomor Akta Nikah<input id="name" type="text" class="form-control form-control-user  {{$errors->first('no_buku') ? "is-invalid" : ""}}" placeholder="Nomor Akta Nikah" name="no_buku" value="" required autocomplete="name">
+                                    Nomor Akta Nikah<input id="name" type="text" class="form-control form-control-user {{$errors->first('no_buku') ? "is-invalid" : ""}}" placeholder="Nomor Akta Nikah" name="no_buku" value="" required autocomplete="name">
                                     <div class="invalid-feedback">
                                         {{$errors->first('no_buku')}}
                                     </div>
@@ -54,12 +54,18 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Scan Gambar Buku Nikah Suami<input id="name" type="file" class="form-control form-control-user" placeholder="Scan Gambar" name="Gambar" value="" required autocomplete="name">
+                                        Scan Gambar Buku Nikah Suami<input id="name" type="file" accept="image/*" class="form-control form-control-user {{$errors->first('GambarSuami') ? "is-invalid" : ""}}" placeholder="Scan Gambar" name="Gambar" value="" required autocomplete="name">
+                                        <div class="invalid-feedback">
+                                            {{$errors->first('GambarSuami')}}
+                                        </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Scan Gambar Buku Nikah Istri<input id="name" type="file" class="form-control form-control-user" placeholder="Scan Gambar" name="Gambar" value="" required autocomplete="name">
+                                        Scan Gambar Buku Nikah Istri<input id="name" type="file" accept="image/*" class="form-control form-control-user {{$errors->first('GambarIstri') ? "is-invalid" : ""}}" placeholder="Scan Gambar" name="Gambar" value="" required autocomplete="name">
+                                        <div class="invalid-feedback">
+                                            {{$errors->first('GambarIstri')}}
+                                        </div>
                                 </div>
                             </div>
                             <div class="form-group">

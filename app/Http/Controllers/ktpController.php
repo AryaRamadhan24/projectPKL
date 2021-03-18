@@ -54,6 +54,7 @@ class ktpController extends Controller
         //     $data->gambar=$request->input('NIK');
         //     $data->save();
         // }
+
         $data->save();
 
         return redirect()->route('editktp',['id'=>$id])->with('success','Data Berhasil diperbarui');
@@ -63,8 +64,10 @@ class ktpController extends Controller
     {
         $validation = \Validator::make($request->all(),[
             'NIK' => 'required|numeric|digits:16',
+            'Gambar' => 'required|mimes:jpg,jpeg,png',
         ])->validate();
 
+        $id_user = Auth::user()->id_user;
         $data=new \App\ktp;
         $data->nik = $request->input('NIK');
         $data->user_id = Auth::user()->id_user;
@@ -79,13 +82,16 @@ class ktpController extends Controller
         // $data->pekerjaan= $request->input('Pekerjaan');
         // $data->kewarganegaraan= $request->input('Kewarganegaraan');
         // $data->masa_berlaku= $request->input('MasaBerlaku');
-        // if($request->hasFile('Gambar')){
-        //     $path=$request->file('Gambar')->move('gambarKTP/',$request->input('NIK'));
-        //     $data->gambar=$request->input('NIK');
-        //     $data->save();
-        // }
+        if($request->hasFile('Gambar')){
+            $ext = $request->file('Gambar')->getClientOriginalExtension();
+            $name = $request->input('NIK').'.'.$ext;
+            // dd($name);
+            $path=$request->file('Gambar')->move('gambar/'.$id_user.'/gambarKTP/',$name);
+            $data->gambar=$name;
+            $data->save();
+        }
         $data->save();
-        return redirect()->route('ktp',['data' => $request])->with('success','Data Berhasil ditambahkan');
+        return redirect()->route('home',['data' => $request])->with('success','Data Berhasil ditambahkan');
     }
 
     public function destroy($id)

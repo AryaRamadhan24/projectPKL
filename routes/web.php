@@ -26,6 +26,10 @@ Route::get('/loginview', 'HomeController@loginview')->name('loginview');
 //register
 Route::get('register/daftardesa/{id}', 'profileController@desa')->name('daftardesa');
 
+//data json
+Route::get('datakkjson/{id}', 'kkController@kk')->name('datakk');
+
+
 // KTP
 Route::get('/ktp', 'ktpController@index')->name('ktp');
 Route::get('/ktp/tambah', 'ktpController@add')->name('addktpview');

@@ -23,6 +23,17 @@ class kkController extends Controller
         return view('kk.tambah');
     }
 
+    public function kk($id)
+    {
+        $json = json_decode(file_get_contents("https://my-json-server.typicode.com/gundho/testjson/kk"), true);
+
+        $key = array_search("$id", array_column($json, 'nomor_kk'));
+
+        $data = $json[$key]['nama_kk'];
+
+        echo $data;
+    }
+
     public function edit($id)
     {
         $data = DB::table('kks')
@@ -36,13 +47,23 @@ class kkController extends Controller
     {
         $validation = \Validator::make($request->all(),[
             'no_kk' => 'required|numeric|digits:16',
+            'Gambar' => 'required|mimes:jpg,jpeg,png',
         ])->validate();
 
+        $id_user = Auth::user()->id_user;
         $data=new \App\kk;
         $data->no_kk = $request->input('no_kk');
         $data->user_id = Auth::user()->id_user;
+        if($request->hasFile('Gambar')){
+            $ext = $request->file('Gambar')->getClientOriginalExtension();
+            $name = $request->input('no_kk').'.'.$ext;
+            // dd($name);
+            $path=$request->file('Gambar')->move('gambar/'.$id_user.'/gambarKK/',$name);
+            $data->gambar=$name;
+            $data->save();
+        }
         $data->save();
-        return redirect()->route('kk', ['data' => $request])->with('success','Data Berhasil ditambahkan');
+        return redirect()->route('home', ['data' => $request])->with('success','Data Berhasil ditambahkan');
     }
     public function destroy($id)
     {

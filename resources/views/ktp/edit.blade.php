@@ -41,7 +41,10 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Gambar Saat Ini<a href="" class="form-control form-control-user"><i class="fas fa-eye"> Tampilkan Gambar</i></a>
+                                    Foto KTP
+                                    {{-- <a href="" class="form-control form-control-user"><i class="fas fa-eye"> Tampilkan Gambar</i></a> --}}
+                                    <br>
+                                    <img src="/gambar/{{ $item->user_id }}/gambarKTP/{{ $item->gambar }}" />
                                 </div>
                             </div>
                             <div class="form-group row">

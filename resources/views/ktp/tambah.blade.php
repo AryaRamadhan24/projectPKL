@@ -49,7 +49,10 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Scan Gambar<input id="name" type="file" class="form-control form-control-user" placeholder="Scan Gambar" name="Gambar" value="" required autocomplete="name">
+                                        Scan Gambar<input id="name" type="file" class="form-control form-control-user {{$errors->first('Gambar') ? "is-invalid" : ""}}" placeholder="Scan Gambar" accept="image/*" name="Gambar" value="" required autocomplete="name">
+                                        <div class="invalid-feedback">
+                                            {{$errors->first('Gambar')}}
+                                        </div>
                                 </div>
                             </div>
                             <div class="form-group">

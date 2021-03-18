@@ -118,7 +118,7 @@
                 $('#desa').append(`<option value="0" disabled selected>Processing...</option>`);
                 $.ajax({
                 type: 'GET',
-                url: '/register/daftardesa/' + id,
+                url: 'register/daftardesa/' + id,
                 success: function (response) {
                 var response = JSON.parse(response);
                 console.log(response);

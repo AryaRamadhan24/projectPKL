@@ -41,12 +41,18 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Gambar Saat Ini<a href="" class="form-control form-control-user"><i class="fas fa-eye"> Tampilkan Gambar Buku Nikah Suami</i></a>
+                                    Gambar Saat Ini
+                                    {{-- <a href="" class="form-control form-control-user"><i class="fas fa-eye"> Tampilkan Gambar Buku Nikah Suami</i></a> --}}
+                                    <br>
+                                    <img src="/gambar/{{ $item->user_id }}/gambarBN/{{ $item->gambar }}" />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Gambar Saat Ini<a href="" class="form-control form-control-user"><i class="fas fa-eye"> Tampilkan Gambar Buku Nikah Istri</i></a>
+                                    Gambar Saat Ini
+                                    {{-- <a href="" class="form-control form-control-user"><i class="fas fa-eye"> Tampilkan Gambar Buku Nikah Istri</i></a> --}}
+                                    <br>
+                                    <img src="/gambar/{{ $item->user_id }}/gambarBN/{{ $item->gambar }}" />
                                 </div>
                             </div>
                             <div class="form-group row">

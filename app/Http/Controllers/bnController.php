@@ -44,13 +44,24 @@ class bnController extends Controller
     {
         $validation = \Validator::make($request->all(),[
             'no_buku' => 'required|numeric|digits:7',
+            'GambarSuami' => 'required|mimes:jpg,jpeg,png',
+            'GambarIstri' => 'required|mimes:jpg,jpeg,png',
         ])->validate();
 
+        $id_user = Auth::user()->id_user;
         $data=new \App\bn;
         $data->no_buku = $request->input('no_buku');
         $data->user_id = Auth::user()->id_user;
+        if($request->hasFile('Gambar')){
+            $ext = $request->file('Gambar')->getClientOriginalExtension();
+            $name = $request->input('no_buku').'.'.$ext;
+            // dd($name);
+            $path=$request->file('Gambar')->move('gambar/'.$id_user.'/gambarBN/',$name);
+            $data->gambar=$name;
+            $data->save();
+        }
         $data->save();
-        return redirect()->route('kk', ['data' => $request])->with('success','Data Berhasil ditambahkan');
+        return redirect()->route('home', ['data' => $request])->with('success','Data Berhasil ditambahkan');
     }
 
     /**

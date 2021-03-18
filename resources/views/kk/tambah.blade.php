@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    No KK<input id="name" type="text" class="form-control form-control-user {{$errors->first('no_kk') ? "is-invalid" : ""}}" placeholder="No KK" name="no_kk" value="" required autocomplete="name">
+                                    No KK<input id="no_kk" type="text" class="form-control form-control-user {{$errors->first('no_kk') ? "is-invalid" : ""}}" placeholder="No KK" name="no_kk" value="" required autocomplete="name">
                                     <div class="invalid-feedback">
                                         {{$errors->first('no_kk')}}
                                     </div>
@@ -44,12 +44,16 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Nama Kepala Keluarga<input id="name" type="text" class="form-control form-control-user" placeholder="Nama" name="name" value="" readonly autocomplete="name">
+                                    Nama Kepala Keluarga
+                                    <input id="nama_kk" type="text" class="form-control form-control-user" placeholder="Nama" name="nama_kk" value="" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Scan Gambar<input id="name" type="file" class="form-control form-control-user" placeholder="Scan Gambar" name="Gambar" value="" required autocomplete="name">
+                                        Scan Gambar<input id="name" type="file" accept="image/*" class="form-control form-control-user {{$errors->first('Gambar') ? "is-invalid" : ""}}" placeholder="Scan Gambar" name="Gambar" value="" required autocomplete="name">
+                                        <div class="invalid-feedback">
+                                            {{$errors->first('Gambar')}}
+                                        </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -76,7 +80,23 @@
         </div>
 
     </div>
+    <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
 
+    <script>
+    $(document).ready(function () {
+        $('#no_kk').on('change', function () {
+            let id = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: '/datakkjson/' + id,
+                success: function (response) {
+                    console.log(response);
+                    $('#nama_kk').val(response);
+                }
+            });
+        });
+    });
+    </script>
 </body>
 
 @endsection
