@@ -73,7 +73,7 @@
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Jumlah Arsip</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                {{ $arsip }}
+                                {{ $arsipAdmin }}
                             </div>
                         </div>
                         <div class="col-auto">
@@ -91,12 +91,14 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Akun Warga
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Akun Warga Desa @foreach ($namaDesa as $item)
+                                {{ $item->nama_desa }}
+                            @endforeach
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                        {{ $warga->count() }}
+                                        {{ $wargaDesa->count() }}
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +117,9 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Jumlah Arsip</div>
+                                Jumlah Arsip Desa @foreach ($namaDesa as $item)
+                                {{ $item->nama_desa }}
+                            @endforeach</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 {{ $arsip }}
                             </div>
@@ -135,12 +139,14 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Akun Warga
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Akun Warga Desa @foreach ($namaDesa as $item)
+                                {{ $item->nama_desa }}
+                            @endforeach
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                        {{ $warga->count() }}
+                                        {{ $wargaDesa->count() }}
                                     </div>
                                 </div>
                             </div>
@@ -159,7 +165,9 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Jumlah Arsip</div>
+                                Jumlah Arsip Desa @foreach ($namaDesa as $item)
+                                {{ $item->nama_desa }}
+                            @endforeach</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 {{ $arsip }}
                             </div>

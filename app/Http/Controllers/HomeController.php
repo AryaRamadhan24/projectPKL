@@ -25,13 +25,21 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $desaIdPetugas = Auth::user()->desa_id;
+
         $admin=DB::table('users')->where('level','admin')->get();
         $petugas=DB::table('users')->where('level','petugas')->get();
         $warga=DB::table('users')->where('level','user')->get();
-        $arsip1=count(DB::table('kks')->get());
-        $arsip2=count(DB::table('ktps')->get());
-        $arsip3=count(DB::table('bns')->get());
+        $wargaDesa=DB::table('users')->where('level','user')->where('desa_id',$desaIdPetugas)->get();
+        $arsip1=count(DB::table('kks')->join('users','users.id_user','kks.user_id')->where('users.desa_id',$desaIdPetugas)->get());
+        $arsip2=count(DB::table('ktps')->join('users','users.id_user','ktps.user_id')->where('users.desa_id',$desaIdPetugas)->get());
+        $arsip3=count(DB::table('bns')->join('users','users.id_user','bns..user_id')->where('users.desa_id',$desaIdPetugas)->get());
         $arsip = $arsip1+$arsip2+$arsip3;
+
+        $arsip1Admin=count(DB::table('kks')->get());
+        $arsip2Admin=count(DB::table('ktps')->get());
+        $arsip3Admin=count(DB::table('bns')->get());
+        $arsipAdmin = $arsip1Admin+$arsip2Admin+$arsip3Admin;
 
         $userData = DB::table('users')
         ->join('desas','users.desa_id','=','desas.id_desa')
@@ -44,11 +52,29 @@ class HomeController extends Controller
         $kk = DB::table('kks')->where('user_id', $userId)->get();
         $bn = DB::table('bns')->where('user_id', $userId)->get();
 
-        $ktp_petugas = DB::table('ktps')->where('status', 'valid')->get();
-        $kk_petugas = DB::table('kks')->where('status', 'valid')->get();
-        $bn_petugas = DB::table('bns')->where('status', 'valid')->get();
+        $ktp_petugas = DB::table('ktps')
+        ->where('status', 'valid')
+        ->join('users','users.id_user','ktps.user_id')
+        ->where('users.desa_id',$desaIdPetugas)
+        ->get();
 
-        return view('dashboard.index',compact('admin','petugas','warga','arsip','userData','ktp','kk','bn','ktp_petugas','kk_petugas','bn_petugas'));
+        $kk_petugas = DB::table('kks')
+        ->where('status', 'valid')
+        ->join('users','users.id_user','kks.user_id')
+        ->where('users.desa_id',$desaIdPetugas)
+        ->get();
+
+        $bn_petugas = DB::table('bns')
+        ->where('status', 'valid')
+        ->join('users','users.id_user','bns..user_id')
+        ->where('users.desa_id',$desaIdPetugas)
+        ->get();
+
+        $namaDesa = DB::table('desas')
+        ->where('id_desa',$desaIdPetugas)
+        ->get();
+
+        return view('dashboard.index',compact('admin','petugas','warga','wargaDesa','arsip','arsipAdmin','userData','ktp','kk','bn','ktp_petugas','kk_petugas','bn_petugas','namaDesa'));
     }
 
     public function loginview()

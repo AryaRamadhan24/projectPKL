@@ -16,10 +16,14 @@ class bnController extends Controller
      */
     public function index()
     {
+        $desaIdPetugas = Auth::user()->desa_id;
+
         $data = DB::table('bns')
+        ->join('users','users.id_user','bns..user_id')
+        ->where('users.desa_id',$desaIdPetugas)
         // ->select('NIK','nama','Tanggal_Lahir','Jenis_Kelamin','agama')
-        ->where('status','proses')
-        ->select('no_buku')
+        ->where('bns.status','proses')
+        ->select('bns.no_buku')
         ->get();
         return view('bukunikah.index',compact('data'));
     }
@@ -115,6 +119,7 @@ class bnController extends Controller
 
         return redirect()->route('bn');
     }
+    
     public function verify(Request $request, $id)
     {
         switch ($request->input('action')) {

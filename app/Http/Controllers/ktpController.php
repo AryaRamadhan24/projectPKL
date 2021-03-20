@@ -11,9 +11,13 @@ class ktpController extends Controller
 {
     public function index()
     {
+        $desaIdPetugas = Auth::user()->desa_id;
+
         $data = DB::table('ktps')
-        ->where('status','proses')
-        ->select('NIK')
+        ->join('users','users.id_user','ktps.user_id')
+        ->where('users.desa_id',$desaIdPetugas)
+        ->where('ktps.status','proses')
+        ->select('ktps.NIK')
         ->get();
 
         return view('ktp.index',compact('data'));

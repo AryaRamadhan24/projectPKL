@@ -25,7 +25,8 @@ class CreateBnsTable extends Migration
             $table->foreign('user_id')->references('id_user')->on('users');
             $table->enum('status',['proses','valid','tidak valid'])->default('proses');
             $table->text('pesan')->default('-');
-            $table->text('gambar')->default("-");
+            $table->text('gambarSuami')->default("-");
+            $table->text('gambarIstri')->default("-");
             $table->timestamps();
         });
     }

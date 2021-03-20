@@ -91,10 +91,8 @@
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Daerah:</h6>
-                <a class="collapse-item" href="{{route('userpetugas') }}">Data Kecamatan</a>
-                <a class="collapse-item" href="{{ route('useradmin') }}">Data Desa</a>
-                <a class="collapse-item" href="{{ route('userwarga') }}">Data Dusun</a>
-                <a class="collapse-item" href="{{ route('userwarga') }}">Data RT/RW</a>
+                <a class="collapse-item" href="{{route('kecamatan') }}">Data Kecamatan</a>
+                <a class="collapse-item" href="{{ route('desa') }}">Data Desa</a>
             </div>
         </div>
     </li>

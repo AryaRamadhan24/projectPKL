@@ -74,3 +74,21 @@ Route::post('/adduser', 'UserController@store')->name('adduser');
 Route::get('/deleteuser/{id}', 'UserController@destroy')->name('deleteuser');
 Route::get('/edituser/{id}', 'UserController@edit')->name('edituser');
 Route::post('/updateuser/{id}', 'UserController@update')->name('updateuser');
+
+
+//kecamatan
+Route::get('/kecamatan', 'kecamatanController@index')->name('kecamatan');
+Route::get('/addkecamatan', 'kecamatanController@create')->name('addkecamatan');
+Route::post('/storekecamatan', 'kecamatanController@store')->name('storekecamatan');
+Route::get('/deletekecamatan/{id}', 'kecamatanController@destroy')->name('deleteKecamatan');
+Route::get('/editKecamatan/{id}', 'kecamatanController@edit')->name('editKecamatan');
+Route::post('/updatekecamatan/{id}','kecamatanController@update')->name('updatekecamatan');
+
+
+//desa
+Route::get('/desa', 'desaController@index')->name('desa');
+Route::get('/adddesa', 'desaController@create')->name('adddesa');
+Route::post('/storedesa', 'desaController@store')->name('storedesa');
+Route::get('/deletedesa/{id}', 'desaController@destroy')->name('deletedesa');
+Route::get('/editdesa/{id}', 'desaController@edit')->name('editdesa');
+Route::post('/updatedesa/{id}','desaController@update')->name('updatedesa');

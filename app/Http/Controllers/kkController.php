@@ -11,10 +11,15 @@ class kkController extends Controller
 {
     public function index()
     {
+        $desaIdPetugas = Auth::user()->desa_id;
+
         $data = DB::table('kks')
-        ->where('status','proses')
-        ->select('no_kk')
+        ->join('users','users.id_user','kks.user_id')
+        ->where('users.desa_id',$desaIdPetugas)
+        ->where('kks.status','proses')
+        ->select('kks.no_kk')
         ->get();
+
         return view('kk.index',compact('data'));
     }
 
@@ -25,7 +30,7 @@ class kkController extends Controller
 
     public function kk($id)
     {
-        $json = json_decode(file_get_contents("https://my-json-server.typicode.com/gundho/testjson/kk"), true);
+        $json = json_decode(file_get_contents("https://my-json-server.typicode.com/Gundho/testjson/kk"), true);
 
         $key = array_search("$id", array_column($json, 'nomor_kk'));
 
