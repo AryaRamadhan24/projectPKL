@@ -52,16 +52,31 @@ class bnController extends Controller
             'GambarIstri' => 'required|mimes:jpg,jpeg,png',
         ])->validate();
 
+        if (bn::where('no_buku','=',$request->input('no_buku'))->exists()) {
+            $status = DB::table('bns')->where('no_buku',$request->input('no_buku'))->select('status')->first();
+            $status2 = $status->status;
+            if ($status2!='valid') {
+                $id = DB::table('bns')->where('no_buku',$request->input('no_buku'))->first()->no_buku;
+                $data2 = bn::findOrFail($id);
+                $data2->delete();
+            }
+            else{
+                return redirect()->back()->with('alert','Data Ini Sudah di Validasi');
+            }
+        }
+
         $id_user = Auth::user()->id_user;
         $data=new \App\bn;
         $data->no_buku = $request->input('no_buku');
         $data->user_id = Auth::user()->id_user;
-        if($request->hasFile('Gambar')){
-            $ext = $request->file('Gambar')->getClientOriginalExtension();
-            $name = $request->input('no_buku').'.'.$ext;
-            // dd($name);
-            $path=$request->file('Gambar')->move('gambar/'.$id_user.'/gambarBN/',$name);
-            $data->gambar=$name;
+        if($request->hasFile('GambarSuami') or $request->hasFile('GambarIstri')){
+            $ext = $request->file('GambarSuami')->getClientOriginalExtension();
+            $name = $request->input('no_buku').'_suami'.'.'.$ext;
+            $name2 = $request->input('no_buku').'_istri'.'.'.$ext;
+            $path=$request->file('GambarSuami')->move('gambar/'.$id_user.'/gambarBN/',$name);
+            $path2=$request->file('GambarIstri')->move('gambar/'.$id_user.'/gambarBN/',$name2);
+            $data->gambarSuami=$name;
+            $data->gambarIstri=$name;
             $data->save();
         }
         $data->save();
@@ -119,7 +134,7 @@ class bnController extends Controller
 
         return redirect()->route('bn');
     }
-    
+
     public function verify(Request $request, $id)
     {
         switch ($request->input('action')) {

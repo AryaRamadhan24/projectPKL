@@ -86,7 +86,7 @@
     </div>
     @elseif(Auth::user()->level=='petugas')
         <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-6 col-md-6 mb-4">
+        <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -104,20 +104,20 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-cloud-upload-alt fa-2x text-gray-300"></i>
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Pending Requests Card Example -->
-        <div class="col-xl-6  col-md-6 mb-4">
+        <div class="col-xl-3  col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Jumlah Arsip Desa @foreach ($namaDesa as $item)
+                                Jumlah Total Arsip Desa @foreach ($namaDesa as $item)
                                 {{ $item->nama_desa }}
                             @endforeach</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
@@ -125,7 +125,49 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-folder-open fa-2x text-gray-300"></i>
+                            <i class="fas fa-chart-pie fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- card3 --}}
+        <div class="col-xl-3  col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Jumlah Arsip Desa @foreach ($namaDesa as $item) 
+                                {{ $item->nama_desa }} 
+                            @endforeach yang sudah diverifikasi </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ $arsipValidated }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-check-square fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- card4 --}}
+        <div class="col-xl-3  col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Jumlah Arsip Desa @foreach ($namaDesa as $item)
+                                {{ $item->nama_desa }}
+                            @endforeach yang belum diverifikasi</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ $arsipProgress }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-hourglass-half fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>

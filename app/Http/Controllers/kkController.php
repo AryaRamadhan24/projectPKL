@@ -33,8 +33,10 @@ class kkController extends Controller
         $json = json_decode(file_get_contents("https://my-json-server.typicode.com/Gundho/testjson/kk"), true);
 
         $key = array_search("$id", array_column($json, 'nomor_kk'));
-
-        $data = $json[$key]['nama_kk'];
+        $data = null;
+        if ($key != null) {
+            $data = $json[$key]['nama_kk'];
+        }
 
         echo $data;
     }
@@ -45,7 +47,21 @@ class kkController extends Controller
         ->where('no_kk', '=', $id)
         ->get();
 
-        return view('kk.edit',compact('data'));
+        $json = json_decode(file_get_contents("https://my-json-server.typicode.com/Gundho/testjson/kk"), true);
+
+        $key = array_search("$id", array_column($json, 'nomor_kk'));
+
+        $nama = $json[$key]['nama_kk'];
+        $dusun = $json[$key]['alamat']['dusun'];
+        $rt = $json[$key]['alamat']['rt'];
+        $rw = $json[$key]['alamat']['rw'];
+        $kodePos = $json[$key]['alamat']['kode_pos'];
+        $noTelp = $json[$key]['alamat']['no_telp'];
+        $alamat = 'DUSUN '.$dusun.', RT : '.$rt.', RW : '.$rw.', Kode Pos : '.$kodePos.', Telp : '.$noTelp;
+        $anggota = $json[$key]['anggota'];
+        // dd($anggota);
+
+        return view('kk.edit',compact('data','nama','alamat','anggota'));
     }
 
     public function store(Request $request)
@@ -54,6 +70,19 @@ class kkController extends Controller
             'no_kk' => 'required|numeric|digits:16',
             'Gambar' => 'required|mimes:jpg,jpeg,png',
         ])->validate();
+
+        if (kk::where('no_kk','=',$request->input('no_kk'))->exists()) {
+            $status = DB::table('kks')->where('no_kk',$request->input('no_kk'))->select('status')->first();
+            $status2 = $status->status;
+            if ($status2!='valid') {
+                $id = DB::table('kks')->where('no_kk',$request->input('no_kk'))->first()->no_kk;
+                $data2 = kk::findOrFail($id);
+                $data2->delete();
+            }
+            else{
+                return redirect()->back()->with('alert','Data Ini Sudah di Validasi');
+            }
+        }
 
         $id_user = Auth::user()->id_user;
         $data=new \App\kk;

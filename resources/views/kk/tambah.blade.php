@@ -2,11 +2,11 @@
 @section('content')
 
 <body class="bg-gradient-light">
-    {{-- @if (session('alert'))
+    @if (session('alert'))
         <div class="alert alert-danger">
             <center>{{ session('alert') }}</center>
         </div>
-    @endif --}}
+    @endif
     {{-- @if (count($errors)>0)
         <div class="alert alert-danger">
             <ul>
@@ -63,6 +63,25 @@
                                         </button>
                                 </div>
                             </div>
+
+                            {{-- <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h4 class="modal-title">Konfirmasi</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                    <p>Apakah anda yakin data yang anda inputkan sudah benar?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary btn-user btn-block" data-dismiss="modal">
+                                        {{ __('Ya') }}
+                                    </button>
+                                    <button type="button" class="btn btn-warning btn-user btn-block" data-dismiss="modal">Tidak</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div> --}}
                             </form>
                             <div class="form-group">
                                 <div class="col-sm-12 mb-3 mb-sm-0">

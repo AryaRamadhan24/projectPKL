@@ -2,11 +2,11 @@
 @section('content')
 
 <body class="bg-gradient-light">
-    {{-- @if (session('alert'))
+    @if (session('alert'))
         <div class="alert alert-danger">
             <center>{{ session('alert') }}</center>
         </div>
-    @endif --}}
+    @endif
     {{-- @if (count($errors)>0)
         <div class="alert alert-danger">
             <ul>
@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    NIK<input id="name" type="text" class="form-control form-control-user {{$errors->first('NIK') ? "is-invalid" : ""}}" placeholder="NIK" name="NIK" value="" required autocomplete="name">
+                                    NIK<input id="NIK" type="text" class="form-control form-control-user {{$errors->first('NIK') ? "is-invalid" : ""}}" placeholder="NIK" name="NIK" value="" required autocomplete="name">
                                     <div class="invalid-feedback">
                                         {{$errors->first('NIK')}}
                                     </div>
@@ -79,7 +79,23 @@
         </div>
 
     </div>
+    <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
 
+    <script>
+    $(document).ready(function () {
+        $('#NIK').on('change', function () {
+            let id = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: '/dataktpjson/' + id,
+                success: function (response) {
+                    console.log(response);
+                    $('#name').val(response);
+                }
+            });
+        });
+    });
+    </script>
 </body>
 
 @endsection

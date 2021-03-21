@@ -2,11 +2,11 @@
 @section('content')
 
 <body class="bg-gradient-light">
-    {{-- @if (session('alert'))
+    @if (session('alert'))
         <div class="alert alert-danger">
             <center>{{ session('alert') }}</center>
         </div>
-    @endif --}}
+    @endif
     {{-- @if (count($errors)>0)
         <div class="alert alert-danger">
             <ul>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Scan Gambar Buku Nikah Suami<input id="name" type="file" accept="image/*" class="form-control form-control-user {{$errors->first('GambarSuami') ? "is-invalid" : ""}}" placeholder="Scan Gambar" name="Gambar" value="" required autocomplete="name">
+                                        Scan Gambar Buku Nikah Suami<input id="name" type="file" accept="image/*" class="form-control form-control-user {{$errors->first('GambarSuami') ? "is-invalid" : ""}}" placeholder="Scan Gambar" name="GambarSuami" value="" required autocomplete="name">
                                         <div class="invalid-feedback">
                                             {{$errors->first('GambarSuami')}}
                                         </div>
@@ -62,7 +62,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Scan Gambar Buku Nikah Istri<input id="name" type="file" accept="image/*" class="form-control form-control-user {{$errors->first('GambarIstri') ? "is-invalid" : ""}}" placeholder="Scan Gambar" name="Gambar" value="" required autocomplete="name">
+                                        Scan Gambar Buku Nikah Istri<input id="name" type="file" accept="image/*" class="form-control form-control-user {{$errors->first('GambarIstri') ? "is-invalid" : ""}}" placeholder="Scan Gambar" name="GambarIstri" value="" required autocomplete="name">
                                         <div class="invalid-feedback">
                                             {{$errors->first('GambarIstri')}}
                                         </div>

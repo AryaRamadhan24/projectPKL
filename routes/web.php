@@ -28,6 +28,7 @@ Route::get('register/daftardesa/{id}', 'profileController@desa')->name('daftarde
 
 //data json
 Route::get('datakkjson/{id}', 'kkController@kk')->name('datakk');
+Route::get('dataktpjson/{id}', 'ktpController@ktp')->name('dataktp');
 
 
 // KTP

@@ -28,13 +28,39 @@ class ktpController extends Controller
         return view('ktp.tambah');
     }
 
+    public function ktp($id)
+    {
+        $json = json_decode(file_get_contents("https://my-json-server.typicode.com/AryaRamadhan24/ktpjson/ktp"), true);
+
+        $key = array_search("$id", array_column($json, 'NIK'));
+        $data = null;
+        if ($key != null) {
+            $data = $json[$key]['nama'];
+        }
+
+        echo $data;
+    }
+
     public function edit($id)
     {
         $data = DB::table('ktps')
         ->where('NIK', '=', $id)
         ->get();
 
-        return view('ktp.edit',compact('data'));
+        $json = json_decode(file_get_contents("https://my-json-server.typicode.com/AryaRamadhan24/ktpjson/ktp"), true);
+
+        $key = array_search("$id", array_column($json, 'NIK'));
+
+        $nama = $json[$key]['nama'];
+        $jk = $json[$key]['jk'];
+        $tempatLahir = $json[$key]['tempat_lahir'];
+        $tglLahir = $json[$key]['tgl_lahir'];
+        $gdr = $json[$key]['gdr'];
+        $agama = $json[$key]['agama'];
+        $status = $json[$key]['status'];
+        $pekerjaan = $json[$key]['pekerjaan'];
+
+        return view('ktp.edit',compact('data','nama','jk','tempatLahir','tglLahir','gdr','agama','status','pekerjaan'));
     }
 
     public function update(Request $request, $id)
@@ -70,6 +96,19 @@ class ktpController extends Controller
             'NIK' => 'required|numeric|digits:16',
             'Gambar' => 'required|mimes:jpg,jpeg,png',
         ])->validate();
+
+        if (ktp::where('nik','=',$request->input('NIK'))->exists()) {
+            $status = DB::table('ktps')->where('nik',$request->input('NIK'))->select('status')->first();
+            $status2 = $status->status;
+            if ($status2!='valid') {
+                $id = DB::table('ktps')->where('nik',$request->input('NIK'))->first()->NIK;
+                $data2 = ktp::findOrFail($id);
+                $data2->delete();
+            }
+            else{
+                return redirect()->back()->with('alert','Data Ini Sudah di Validasi');
+            }
+        }
 
         $id_user = Auth::user()->id_user;
         $data=new \App\ktp;
