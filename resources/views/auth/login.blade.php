@@ -79,12 +79,11 @@
                                         <a class="btn btn-secondary btn-user btn-bloc" style="color:white," href="{{ route('register') }}">{{ __('Register') }}</a>
                                     </a>
                                 @endif
-
-                                    {{-- @if (Route::has('password.request'))
+                                    @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
-                                    @endif --}}
+                                    @endif
                                 </form>
 
                             </div>

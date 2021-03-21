@@ -1,11 +1,18 @@
 @extends('layouts.app')
+@extends('layouts.css')
+@extends('landing.css')
+
+<body style="background-image: url(https://farm5.staticflickr.com/4340/36400422205_1f196452d0_o.png); background-color:rgba(0,0,0,0); background-repeat:no-repeat; background-size:100% 100%;" >
+    <section id="abc">
+    <div class="overlay">
+    <div class="container">
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header">{{ __('Ubah Password') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -18,7 +25,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Masukkan E-Mail') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -34,7 +41,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
+                                    {{ __('Kirim Link Ubah Password') }}
                                 </button>
                             </div>
                         </div>
@@ -45,3 +52,6 @@
     </div>
 </div>
 @endsection
+        </div>
+    </div>
+</body>
