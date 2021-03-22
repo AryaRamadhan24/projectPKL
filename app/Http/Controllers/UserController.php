@@ -155,8 +155,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $data = User::findOrFail($id);
-        $data->delete();
+        try {
+            $data = User::findOrFail($id);
+            $data->delete();
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('alert','User Tidak Dapat Di Hapus Karena Masih Terdapat Arsip Pada User Tersebut');
+        }
 
         return redirect()->back();
     }

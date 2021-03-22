@@ -51,12 +51,14 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                    @if ($anggota != null)
                                                     @foreach ($anggota as $item2)
                                                     <tr>
                                                         <td>{{ $item2['nama'] }}</td>
                                                         <td>{{ $item2['SHDRT'] }}</td>
                                                     </tr>
                                                     @endforeach
+                                                    @endif
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -69,7 +71,7 @@
                                     Foto KK
                                     <br>
                                     <center>
-                                    <img style="max-width: 100%; max-height: 100%; object-fit:cover;" src="/gambar/{{ $item->user_id }}/gambarKK/{{ $item->gambar }}"/>
+                                    <img style="max-width: 100%; max-height: 100%; object-fit:cover;" src="{{url('gambarkk/'.$item->no_kk)}}"/>
                                     </center>
                                 </div>
                             </div>

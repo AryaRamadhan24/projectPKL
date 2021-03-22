@@ -1,6 +1,10 @@
 @extends('master.master')
 @section('content')
-
+    @if (session('alert'))
+    <div class="alert alert-danger">
+        <center>{{ session('alert') }}</center>
+    </div>
+    @endif
     {{-- table --}}
     <!-- DataTales Example -->
     <div class="card shadow mb-4">

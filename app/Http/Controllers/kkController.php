@@ -33,8 +33,9 @@ class kkController extends Controller
         $json = json_decode(file_get_contents("https://my-json-server.typicode.com/Gundho/testjson/kk"), true);
 
         $key = array_search("$id", array_column($json, 'nomor_kk'));
-        $data = null;
-        if ($key != null) {
+        // dd($key);
+        $data = 'Data Tidak Ditemukan';
+        if (is_int($key)) {
             $data = $json[$key]['nama_kk'];
         }
 
@@ -51,15 +52,24 @@ class kkController extends Controller
 
         $key = array_search("$id", array_column($json, 'nomor_kk'));
 
-        $nama = $json[$key]['nama_kk'];
-        $dusun = $json[$key]['alamat']['dusun'];
-        $rt = $json[$key]['alamat']['rt'];
-        $rw = $json[$key]['alamat']['rw'];
-        $kodePos = $json[$key]['alamat']['kode_pos'];
-        $noTelp = $json[$key]['alamat']['no_telp'];
-        $alamat = 'DUSUN '.$dusun.', RT : '.$rt.', RW : '.$rw.', Kode Pos : '.$kodePos.', Telp : '.$noTelp;
-        $anggota = $json[$key]['anggota'];
-        // dd($anggota);
+        $nama = 'Data Tidak Ditemukan';
+        $dusun = 'Data Tidak Ditemukan';
+        $rt = 'Data Tidak Ditemukan';
+        $rw = 'Data Tidak Ditemukan';
+        $kodePos = 'Data Tidak Ditemukan';
+        $noTelp = 'Data Tidak Ditemukan';
+        $alamat = 'Data Tidak Ditemukan';
+        $anggota = null;
+        if (is_int($key)) {
+            $nama = $json[$key]['nama_kk'];
+            $dusun = $json[$key]['alamat']['dusun'];
+            $rt = $json[$key]['alamat']['rt'];
+            $rw = $json[$key]['alamat']['rw'];
+            $kodePos = $json[$key]['alamat']['kode_pos'];
+            $noTelp = $json[$key]['alamat']['no_telp'];
+            $alamat = 'DUSUN '.$dusun.', RT : '.$rt.', RW : '.$rw.', Kode Pos : '.$kodePos.', Telp : '.$noTelp;
+            $anggota = $json[$key]['anggota'];
+        }
 
         return view('kk.edit',compact('data','nama','alamat','anggota'));
     }
@@ -93,7 +103,7 @@ class kkController extends Controller
             $name = $request->input('no_kk').'.'.$ext;
             // dd($name);
             $path=$request->file('Gambar')->move('gambar/'.$id_user.'/gambarKK/',$name);
-            $data->gambar=$name;
+            $data->gambar= '/gambar/'.$id_user.'/gambarKK/'.$name;
             $data->save();
         }
         $data->save();
@@ -127,5 +137,16 @@ class kkController extends Controller
         }
 
         return redirect()->route('kk');
+    }
+
+    public function gambarkk($id)
+    {
+        header("Content-Type: image/png");
+        $path = DB::table('kks')->where('no_kk',$id)->select('gambar')->first();
+        $path2 = $path->gambar;
+        // dd($path2);
+        // $ext = $request->file('Gambar')->getClientOriginalExtension();
+
+        return response()->file(public_path($path2));
     }
 }

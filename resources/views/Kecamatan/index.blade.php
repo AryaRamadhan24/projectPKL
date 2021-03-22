@@ -1,6 +1,10 @@
 @extends('master.master')
 @section('content')
-
+    @if (session('alert'))
+        <div class="alert alert-danger">
+            <center>{{ session('alert') }}</center>
+        </div>
+    @endif
     {{-- table --}}
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -10,7 +14,7 @@
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Daftar Kecamatan</h1>
             </div>
-        <div class="col-lg-2">
+        <div class="col-lg-4">
             <a href="{{route('addkecamatan')}}" class="btn btn-outline-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Data</a>
         </div>
             <br>

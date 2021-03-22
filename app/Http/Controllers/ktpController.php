@@ -33,8 +33,8 @@ class ktpController extends Controller
         $json = json_decode(file_get_contents("https://my-json-server.typicode.com/AryaRamadhan24/ktpjson/ktp"), true);
 
         $key = array_search("$id", array_column($json, 'NIK'));
-        $data = null;
-        if ($key != null) {
+        $data = 'Data Tidak Ditemukan';
+        if (is_int($key)) {
             $data = $json[$key]['nama'];
         }
 
@@ -51,14 +51,24 @@ class ktpController extends Controller
 
         $key = array_search("$id", array_column($json, 'NIK'));
 
-        $nama = $json[$key]['nama'];
-        $jk = $json[$key]['jk'];
-        $tempatLahir = $json[$key]['tempat_lahir'];
-        $tglLahir = $json[$key]['tgl_lahir'];
-        $gdr = $json[$key]['gdr'];
-        $agama = $json[$key]['agama'];
-        $status = $json[$key]['status'];
-        $pekerjaan = $json[$key]['pekerjaan'];
+        $nama = 'Data Tidak Ditemukan';
+        $jk = 'Data Tidak Ditemukan';
+        $tempatLahir = 'Data Tidak Ditemukan';
+        $tglLahir = 'Data Tidak Ditemukan';
+        $gdr = 'Data Tidak Ditemukan';
+        $agama = 'Data Tidak Ditemukan';
+        $status = 'Data Tidak Ditemukan';
+        $pekerjaan = 'Data Tidak Ditemukan';
+        if (is_int($key)) {
+            $nama = $json[$key]['nama'];
+            $jk = $json[$key]['jk'];
+            $tempatLahir = $json[$key]['tempat_lahir'];
+            $tglLahir = $json[$key]['tgl_lahir'];
+            $gdr = $json[$key]['gdr'];
+            $agama = $json[$key]['agama'];
+            $status = $json[$key]['status'];
+            $pekerjaan = $json[$key]['pekerjaan'];
+        }
 
         return view('ktp.edit',compact('data','nama','jk','tempatLahir','tglLahir','gdr','agama','status','pekerjaan'));
     }
@@ -114,23 +124,12 @@ class ktpController extends Controller
         $data=new \App\ktp;
         $data->nik = $request->input('NIK');
         $data->user_id = Auth::user()->id_user;
-        // $data->nama= $request->input('name');
-        // $data->Tempat_Lahir= $request->input('tempat');
-        // $data->Tanggal_Lahir= $request->input('tanggal');
-        // $data->Golongan_Darah= $request->input('Golongan_Darah');
-        // $data->Jenis_Kelamin= $request->input('JenisKelamin');
-        // $data->Alamat= $request->input('Alamat');
-        // $data->agama= $request->input('Agama');
-        // $data->status= $request->input('StatusPerkawinan');
-        // $data->pekerjaan= $request->input('Pekerjaan');
-        // $data->kewarganegaraan= $request->input('Kewarganegaraan');
-        // $data->masa_berlaku= $request->input('MasaBerlaku');
         if($request->hasFile('Gambar')){
             $ext = $request->file('Gambar')->getClientOriginalExtension();
             $name = $request->input('NIK').'.'.$ext;
             // dd($name);
             $path=$request->file('Gambar')->move('gambar/'.$id_user.'/gambarKTP/',$name);
-            $data->gambar=$name;
+            $data->gambar='/gambar/'.$id_user.'/gambarKTP/'.$name;
             $data->save();
         }
         $data->save();
@@ -165,5 +164,16 @@ class ktpController extends Controller
         }
 
         return redirect()->route('ktp');
+    }
+
+    public function gambarktp($id)
+    {
+        header("Content-Type: image/png");
+        $path = DB::table('ktps')->where('NIK',$id)->select('gambar')->first();
+        $path2 = $path->gambar;
+        // dd($path2);
+        // $ext = $request->file('Gambar')->getClientOriginalExtension();
+
+        return response()->file(public_path($path2));
     }
 }

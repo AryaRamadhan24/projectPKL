@@ -27,10 +27,13 @@ class HomeController extends Controller
     {
         $desaIdPetugas = Auth::user()->desa_id;
 
+        $user=DB::table('users')->join('desas','desas.id_desa','=','users.desa_id')->select('users.id_user','users.name','users.email','users.level','desas.nama_desa')->get();
         $admin=DB::table('users')->where('level','admin')->get();
         $petugas=DB::table('users')->where('level','petugas')->get();
         $warga=DB::table('users')->where('level','user')->get();
         $wargaDesa=DB::table('users')->where('level','user')->where('desa_id',$desaIdPetugas)->get();
+        $kecamatan=DB::table('kecamatans')->get();
+        $desa=DB::table('desas')->join('kecamatans','kecamatans.id_kecamatan','=','desas.kecamatan_id')->select('desas.id_desa','desas.nama_desa','kecamatans.nama_kecamatan')->get();
 
         $arsip1=count(DB::table('kks')->join('users','users.id_user','kks.user_id')->where('users.desa_id',$desaIdPetugas)->get());
         $arsip2=count(DB::table('ktps')->join('users','users.id_user','ktps.user_id')->where('users.desa_id',$desaIdPetugas)->get());
@@ -85,7 +88,7 @@ class HomeController extends Controller
         ->where('id_desa',$desaIdPetugas)
         ->get();
 
-        return view('dashboard.index',compact('admin','petugas','warga','wargaDesa','arsip','arsipAdmin','userData','ktp','kk','bn','ktp_petugas','kk_petugas','bn_petugas','namaDesa','arsipValidated','arsipProgress'));
+        return view('dashboard.index',compact('admin','petugas','warga','wargaDesa','arsip','arsipAdmin','userData','ktp','kk','bn','ktp_petugas','kk_petugas','bn_petugas','namaDesa','arsipValidated','arsipProgress','user','kecamatan','desa'));
     }
 
     public function loginview()

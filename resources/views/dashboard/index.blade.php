@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -138,8 +138,8 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Jumlah Arsip Desa @foreach ($namaDesa as $item) 
-                                {{ $item->nama_desa }} 
+                                Jumlah Arsip Desa @foreach ($namaDesa as $item)
+                                {{ $item->nama_desa }}
                             @endforeach yang sudah diverifikasi </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 {{ $arsipValidated }}
@@ -194,7 +194,7 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-cloud-upload-alt fa-2x text-gray-300"></i>
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -361,6 +361,94 @@
                         </tr>
                         @endforeach
                         @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @elseif (Auth::user()->level=='admin')
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data</h6>
+        </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Akun</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered display" id="dataTable2" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Level</th>
+                            <th>Desa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($user as $item)
+                        <tr>
+                            <td>{{$item->id_user}}</td>
+                            <td>{{$item->name}}</td>
+                            <td>{{$item->email}}</td>
+                            <td>{{$item->level}}</td>
+                            <td>{{$item->nama_desa}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Kecamatan</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered display" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Nama</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($kecamatan as $item)
+                        <tr>
+                            <td>{{$item->id_kecamatan}}</td>
+                            <td>{{$item->nama_kecamatan}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Desa</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered display" id="dataTable3" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Nama</th>
+                            <th>Kecamatan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($desa as $item)
+                        <tr>
+                            <td>{{$item->id_desa}}</td>
+                            <td>{{$item->nama_desa}}</td>
+                            <td>{{$item->nama_kecamatan}}</td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

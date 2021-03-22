@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Nomor Akta Nikah<input id="name" type="text" class="form-control form-control-user {{$errors->first('no_buku') ? "is-invalid" : ""}}" placeholder="Nomor Akta Nikah" name="no_buku" value="" required autocomplete="name">
+                                    Nomor Akta Nikah<input id="no_buku" type="text" class="form-control form-control-user {{$errors->first('no_buku') ? "is-invalid" : ""}}" placeholder="Nomor Akta Nikah" name="no_buku" value="" required autocomplete="name">
                                     <div class="invalid-feedback">
                                         {{$errors->first('no_buku')}}
                                     </div>
@@ -44,12 +44,12 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Nama Suami<input id="name" type="text" class="form-control form-control-user" placeholder="Nama" name="name" value="" readonly autocomplete="name">
+                                    Nama Suami<input id="namaSuami" type="text" class="form-control form-control-user" placeholder="Nama Suami" name="name" value="" readonly autocomplete="name">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
-                                    Nama Istri<input id="name" type="text" class="form-control form-control-user" placeholder="Nama" name="name" value="" readonly autocomplete="name">
+                                    Nama Istri<input id="namaIstri" type="text" class="form-control form-control-user" placeholder="Nama Istri" name="name" value="" readonly autocomplete="name">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -92,7 +92,25 @@
         </div>
 
     </div>
+    <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
 
+    <script>
+    $(document).ready(function () {
+        $('#no_buku').on('change', function () {
+            let id = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: '/databnjson/' + id,
+                success: function (response) {
+                    var response = JSON.parse(response);
+                    console.log(response);
+                        $('#namaSuami').val(response['namaSuami']);
+                        $('#namaIstri').val(response['namaIstri']);
+                    }
+            });
+        });
+    });
+    </script>
 </body>
 
 @endsection

@@ -6,6 +6,7 @@ use App\bn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\Types\Integer;
 
 class bnController extends Controller
 {
@@ -36,6 +37,22 @@ class bnController extends Controller
     public function add()
     {
         return view('bukunikah.tambah');
+    }
+
+    public function bn($id)
+    {
+        $json = json_decode(file_get_contents("https://my-json-server.typicode.com/Aliie25/BukuNikahJson/bn"), true);
+
+        $key = array_search("$id", array_column($json, 'nomor_bn'));
+        // dd($key);
+        $data3 = ['namaSuami'=>'Data Tidak Ditemukan','namaIstri'=>'Data Tidak Ditemukan'];
+        if (is_int($key)) {
+            $data = $json[$key]['nama_suami'];
+            $data2 = $json[$key]['nama_istri'];
+            $data3 = ['namaSuami'=>$data,'namaIstri'=>$data2];
+        }
+
+        echo json_encode($data3);
     }
 
     /**
@@ -75,8 +92,8 @@ class bnController extends Controller
             $name2 = $request->input('no_buku').'_istri'.'.'.$ext;
             $path=$request->file('GambarSuami')->move('gambar/'.$id_user.'/gambarBN/',$name);
             $path2=$request->file('GambarIstri')->move('gambar/'.$id_user.'/gambarBN/',$name2);
-            $data->gambarSuami=$name;
-            $data->gambarIstri=$name;
+            $data->gambarSuami='/gambar/'.$id_user.'/gambarBN/'.$name;
+            $data->gambarIstri='/gambar/'.$id_user.'/gambarBN/'.$name2;
             $data->save();
         }
         $data->save();
@@ -106,7 +123,21 @@ class bnController extends Controller
         ->where('no_buku', '=', $id)
         ->get();
 
-        return view('bukunikah.edit',compact('data'));
+        $json = json_decode(file_get_contents("https://my-json-server.typicode.com/Aliie25/BukuNikahJson/bn"), true);
+
+        $key = array_search("$id", array_column($json, 'nomor_bn'));
+
+        $data1 = 'Data Tidak Ditemukan';
+        $data2 = 'Data Tidak Ditemukan';
+        $tglMenikah = 'Data Tidak Ditemukan';
+        if (is_int($key)) {
+            $data1 = $json[$key]['nama_suami'];
+            $data2 = $json[$key]['nama_istri'];
+            $data3 = ['namaSuami'=>$data1,'namaIstri'=>$data2];
+            $tglMenikah = $json[$key]['Tanggal_Menikah'];
+        }
+
+        return view('bukunikah.edit',compact('data','tglMenikah','data1','data2'));
     }
 
     /**
@@ -156,5 +187,23 @@ class bnController extends Controller
         }
 
         return redirect()->route('bn');
+    }
+
+    public function gambarbnsuami($id)
+    {
+        header("Content-Type: image/png");
+        $path = DB::table('bns')->where('no_buku',$id)->select('gambarSuami')->first();
+        $path2 = $path->gambarSuami;
+
+        return response()->file(public_path($path2));
+    }
+
+    public function gambarbnistri($id)
+    {
+        header("Content-Type: image/png");
+        $path = DB::table('bns')->where('no_buku',$id)->select('gambarIstri')->first();
+        $path2 = $path->gambarIstri;
+
+        return response()->file(public_path($path2));
     }
 }

@@ -104,8 +104,12 @@ class desaController extends Controller
      */
     public function destroy($id)
     {
-        $data = desa::findOrFail($id);
-        $data->delete();
+        try {
+            $data = desa::findOrFail($id);
+            $data->delete();
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('alert','Data Tidak Dapat Di Hapus Karena Masih Terdapat User Pada Desa Tersebut');
+        }
 
         return redirect()->route('desa');
     }

@@ -84,7 +84,7 @@
                                     Foto KTP
                                     <br>
                                     <center>
-                                    <img style="max-width: 100%; max-height: 100%; object-fit:cover;" src="/gambar/{{ $item->user_id }}/gambarKTP/{{ $item->gambar }}" />
+                                    <img style="max-width: 100%; max-height: 100%; object-fit:cover;" src="{{url('gambarktp/'.$item->NIK)}}" />
                                     </center>
                                 </div>
                             </div>

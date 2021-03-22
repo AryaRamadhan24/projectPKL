@@ -29,6 +29,14 @@ Route::get('register/daftardesa/{id}', 'profileController@desa')->name('daftarde
 //data json
 Route::get('datakkjson/{id}', 'kkController@kk')->name('datakk');
 Route::get('dataktpjson/{id}', 'ktpController@ktp')->name('dataktp');
+Route::get('databnjson/{id}', 'bnController@bn')->name('dataktp');
+
+
+//gambar controller
+Route::get('gambarkk/{id}', 'kkController@gambarkk')->name('gambarkk');
+Route::get('gambarktp/{id}', 'ktpController@gambarktp')->name('gambarktp');
+Route::get('gambarbnsuami/{id}', 'bnController@gambarbnsuami')->name('gambarbnsuami');
+Route::get('gambarbnistri/{id}', 'bnController@gambarbnistri')->name('gambarbnistri');
 
 
 // KTP
