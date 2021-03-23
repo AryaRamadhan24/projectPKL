@@ -74,6 +74,9 @@
                                     </center>
                                 </div>
                             </div>
+                            @if ($item->status == 'valid')
+                            <center><h2>Data Sudah Divalidasi</h2></center>
+                            @else
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
                                     Pesan<input id="name" type="text" class="form-control form-control-user" placeholder="Pesan" name="pesan" required autocomplete="name">
@@ -93,6 +96,7 @@
                                 </div>
                                 </div>
                             </div>
+                            @endif
                         </form>
                             @endforeach
                             <div class="form-group">

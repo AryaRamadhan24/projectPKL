@@ -24,6 +24,9 @@
     <div class="container">
         <div class="card o-hidden border-0 shadow-lg my-2">
             <div class="card-body p-0">
+                @if ($data->isEmpty())
+                <center><h2>Maaf ! Data Belum Diinputkan</h2></center>
+                @else
                 @foreach ($data as $item)
                 <form method="POST" action="{{ route('verifyktp',['id'=>$item->NIK]) }}" enctype="multipart/form-data">
                     @csrf
@@ -88,6 +91,9 @@
                                     </center>
                                 </div>
                             </div>
+                            @if ($item->status == 'valid')
+                            <center><h2>Data Sudah Divalidasi</h2></center>
+                            @else
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
                                     Pesan<input id="name" type="text" class="form-control form-control-user" placeholder="Pesan" name="pesan" required autocomplete="name">
@@ -107,6 +113,7 @@
                                 </div>
                                 </div>
                             </div>
+                            @endif
                         </form>
                             @endforeach
                             <div class="form-group">
@@ -116,6 +123,15 @@
                                     </a>
                                 </div>
                             </div>
+                        @endif
+                        <div class="form-group">
+                            <div class="col-sm-13 mb-3 mb-sm-0">
+                                <a onclick="history.go(-1)" class="btn btn-warning btn-user btn-block">
+                                    {{ __('Kembali') }}
+                                </a>
+                            </div>
+                        </div>
+
                             <hr>
                         </div>
                     </div>
@@ -126,5 +142,6 @@
     </div>
 
 </body>
+
 
 @endsection

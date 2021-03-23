@@ -21,7 +21,8 @@
                             <th>Jenis Kelamin</th>
                             <th>Alamat</th>
                             <th>Agama</th> --}}
-                            <th>Status</th>
+                            <th>Waktu Upload</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,6 +34,7 @@
                             <td>{{ $item->Jenis_Kelamin }}</td>
                             <td>{{ $item->Alamat }}</td>
                             <td>{{ $item->agama }}</td> --}}
+                            <td>{{ $item->updated_at }}</td>
                             <td>
                                 <a href="{{  route('editkk', ['id'=>$item->no_kk]) }}"><div class="btn btn-outline-info btn-rounded btn-sm"><i class="fas fa-eye"></i></div></a>
                                 <a href="{{  route('deletekk', ['id'=>$item->no_kk]) }}"><div class="btn btn-outline-danger btn-rounded btn-sm"><i class="fa fa-trash"></i></div></a>

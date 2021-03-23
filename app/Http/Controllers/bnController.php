@@ -24,7 +24,7 @@ class bnController extends Controller
         ->where('users.desa_id',$desaIdPetugas)
         // ->select('NIK','nama','Tanggal_Lahir','Jenis_Kelamin','agama')
         ->where('bns.status','proses')
-        ->select('bns.no_buku')
+        ->select('bns.no_buku','bns.updated_at')
         ->get();
         return view('bukunikah.index',compact('data'));
     }

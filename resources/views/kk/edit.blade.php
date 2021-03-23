@@ -46,6 +46,7 @@
                                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                                     <thead>
                                                         <tr>
+                                                            <th>NIK</th>
                                                             <th>Nama</th>
                                                             <th>SHDRT</th>
                                                         </tr>
@@ -54,6 +55,7 @@
                                                     @if ($anggota != null)
                                                     @foreach ($anggota as $item2)
                                                     <tr>
+                                                        <td><a href="{{route('editktp',['id'=>$item2['NIK']])}}">{{ $item2['NIK'] }}</a></td>
                                                         <td>{{ $item2['nama'] }}</td>
                                                         <td>{{ $item2['SHDRT'] }}</td>
                                                     </tr>
@@ -75,6 +77,10 @@
                                     </center>
                                 </div>
                             </div>
+                            @if ($item->status == 'valid')
+                            <center><h2>Data Sudah Divalidasi</h2></center>
+                            @else
+
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-3 mb-sm-0">
                                     Pesan<input id="name" type="text" class="form-control form-control-user" placeholder="Pesan" name="pesan" required autocomplete="name">
@@ -83,18 +89,19 @@
 
                             <div class="form-group">
                                 <div class="row">
-                                <div class="col-sm-6">
+                                    <div class="col-sm-6">
                                         <button type="submit" name="action" value="valid" class="btn btn-success btn-user btn-block"><i class="fas fa-check"></i>
                                             {{ __('Valid') }}
                                         </button>
-                                </div>
-                                <div class="col-sm-6">
+                                    </div>
+                                    <div class="col-sm-6">
                                         <button type="submit" name="action" value="notvalid" class="btn btn-danger btn-user btn-block"><i class="fas fa-times"></i>
                                             {{ __('Tidak Valid') }}
                                         </button>
-                                </div>
+                                    </div>
                                 </div>
                             </div>
+                            @endif
                         </form>
                             @endforeach
                             <div class="form-group">

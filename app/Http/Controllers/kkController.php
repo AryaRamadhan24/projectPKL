@@ -17,7 +17,7 @@ class kkController extends Controller
         ->join('users','users.id_user','kks.user_id')
         ->where('users.desa_id',$desaIdPetugas)
         ->where('kks.status','proses')
-        ->select('kks.no_kk')
+        ->select('kks.no_kk','kks.updated_at')
         ->get();
 
         return view('kk.index',compact('data'));

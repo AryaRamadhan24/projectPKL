@@ -37,8 +37,8 @@
         </a>
         <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('addktpview')}}">Kartu Tanda Penduduk</a>
                 <a class="collapse-item" href="{{route('addkk')}}">Kartu Keluarga</a>
+                <a class="collapse-item" href="{{route('addktpview')}}">Kartu Tanda Penduduk</a>
                 <a class="collapse-item" href="{{route('addbn')}}">Buku Nikah</a>
             </div>
         </div>
@@ -53,8 +53,8 @@
         </a>
         <div id="abc" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('ktp')}}">Kartu Tanda Penduduk</a>
                 <a class="collapse-item" href="{{route('kk')}}">Kartu Keluarga</a>
+                <a class="collapse-item" href="{{route('ktp')}}">Kartu Tanda Penduduk</a>
                 <a class="collapse-item" href="{{route('bn')}}">Buku Nikah</a>
             </div>
         </div>
@@ -86,7 +86,7 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
             aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-globe-asia"></i>
-            <span>Data Daerah</span>
+            <span>Data Wilayah</span>
         </a>
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">

@@ -17,7 +17,7 @@ class ktpController extends Controller
         ->join('users','users.id_user','ktps.user_id')
         ->where('users.desa_id',$desaIdPetugas)
         ->where('ktps.status','proses')
-        ->select('ktps.NIK')
+        ->select('ktps.NIK','ktps.updated_at')
         ->get();
 
         return view('ktp.index',compact('data'));
@@ -70,6 +70,7 @@ class ktpController extends Controller
             $pekerjaan = $json[$key]['pekerjaan'];
         }
 
+        // dd($data);
         return view('ktp.edit',compact('data','nama','jk','tempatLahir','tglLahir','gdr','agama','status','pekerjaan'));
     }
 

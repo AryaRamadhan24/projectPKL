@@ -20,17 +20,17 @@
                                 <h1 class="h4 text-gray-900 mb-4">Tambah Desa</h1>
                             </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-12 mb-3 mb-sm-0">
-                                        Nama Desa<input id="name" type="text" class="form-control form-control-user" placeholder="Nama" name="name" value="" required autocomplete="name">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">Kecamatan
                                         <select name="kecamatan" id="" class="form-control form-control-user">
                                             @foreach ($data as $item)
                                             <option value="{{ $item->id_kecamatan }}">{{ $item->nama_kecamatan }}</option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                        Nama Desa<input id="name" type="text" class="form-control form-control-user" placeholder="Nama" name="name" value="" required autocomplete="name">
                                     </div>
                                 </div>
                                 <div class="form-group">

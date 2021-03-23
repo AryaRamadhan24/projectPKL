@@ -20,13 +20,15 @@
                             <th>Jenis Kelamin</th>
                             <th>Alamat</th>
                             <th>Agama</th> --}}
-                            <th>Status</th>
+                            <th>Waktu Upload</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($data as $item)
                         <tr>
                             <td>{{ $item->no_buku }}</td>
+                            <td>{{ $item->updated_at }}</td>
                             {{-- <td>{{ $item->nama }}</td>
                             <td>{{ $item->Tanggal_Lahir }}</td>
                             <td>{{ $item->Jenis_Kelamin }}</td>
