@@ -369,6 +369,17 @@
     @elseif (Auth::user()->level=='admin')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
+            {{-- CHart --}}
+            {{-- <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Grafik Arsip Tiap Kecamatan</h6>
+                </div>
+                <div class="card-body">
+                    <div style="width: 500px;height: 500px">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div> --}}
         <h6 class="m-0 font-weight-bold text-primary">Data</h6>
         </div>
     <div class="card shadow mb-4">

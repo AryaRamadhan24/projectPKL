@@ -34,7 +34,6 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Edit Profile</h1>
                             </div>
-
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                         Nama<input id="name" type="text" class="form-control form-control-user" placeholder="Nama" name="name" value="{{$item->name}}" required autocomplete="name">
@@ -101,9 +100,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </body>
 
 @endsection
