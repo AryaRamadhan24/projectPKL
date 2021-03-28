@@ -31,7 +31,7 @@
                         @foreach ($data as $item)
                         <tr>
                             <td>{{ $item->nama_desa }}</td>
-                            <td></td>
+                            <td>{{ $item->nama_kecamatan }}</td>
                             <td>
                                 {{-- <a href="{{ route('addkecamatan') }}"><div class="btn btn-outline-info btn-rounded btn-sm"><i class="fas fa-plus"></i></div></a> --}}
                                 <a href="{{ route('editdesa', ['id'=>$item->id_desa]) }}"><div class="btn btn-outline-warning btn-rounded btn-sm"><i class="fas fa-edit"></i></div></a>
