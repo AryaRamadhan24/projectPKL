@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="form-group">
                                     Email<input id="email" type="email" class="form-control form-control-user" name="email" value="{{$item->email}}" required autocomplete="email"
-                                        placeholder="Email Address">
+                                        placeholder="Email Address" readonly    >
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
@@ -118,7 +118,7 @@
                 $('#desa').append(`<option value="0" disabled selected>Processing...</option>`);
                 $.ajax({
                 type: 'GET',
-                url: 'register/daftardesa/' + id,
+                url: '/register/daftardesa/' + id,
                 success: function (response) {
                 var response = JSON.parse(response);
                 console.log(response);

@@ -77,6 +77,11 @@ class UserController extends Controller
         $validation = \Validator::make($request->all(),[
             'password' => 'required|min:8',
             'password_confirmation' => 'required_with:password|same:password|min:8'
+        ],
+        [
+           'password.min'=> 'Password Minimal 8 Karakter', // custom message
+           'password_confirmation.min'=> 'Password Minimal 8 Karakter', // custom message
+           'password_confirmation.same'=> 'Password tidak sesuai', // custom message
         ])->validate();
 
         if($request->input('password')!=$request->input('password_confirmation')){

@@ -16,7 +16,7 @@ class desaController extends Controller
     public function index()
     {
         $data = DB::table('desas')
-        ->join('kecamatans','desas.id_desa','kecamatans.id_kecamatan')
+        ->join('kecamatans','kecamatans.id_kecamatan','desas.kecamatan_id')
         ->select('desas.id_desa','desas.nama_desa','kecamatans.nama_kecamatan')
         ->get();
 

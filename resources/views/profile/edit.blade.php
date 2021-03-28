@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="form-group">
                                     Email<input id="email" type="email" class="form-control form-control-user" name="email" value="{{$item->email}}" required autocomplete="email"
-                                        placeholder="Email Address">
+                                        placeholder="Email Address" readonly>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
