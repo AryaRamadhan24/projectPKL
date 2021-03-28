@@ -106,6 +106,11 @@ class ktpController extends Controller
         $validation = \Validator::make($request->all(),[
             'NIK' => 'required|numeric|digits:16',
             'Gambar' => 'required|mimes:jpg,jpeg,png',
+        ],
+        [
+           'NIK.numeric'=> 'Nomor NIK harus berupa angka', // custom message
+           'NIK.digits'=> 'Nomor NIK minimal 16 digit', // custom message
+           'Gambar.mimes'=> 'Foto KTP harus berformat jpg/jpeg/png', // custom message
         ])->validate();
 
         if (ktp::where('nik','=',$request->input('NIK'))->exists()) {

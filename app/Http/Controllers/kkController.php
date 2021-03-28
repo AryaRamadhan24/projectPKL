@@ -79,6 +79,11 @@ class kkController extends Controller
         $validation = \Validator::make($request->all(),[
             'no_kk' => 'required|numeric|digits:16',
             'Gambar' => 'required|mimes:jpg,jpeg,png',
+        ],
+        [
+           'no_kk.numeric'=> 'Nomor KK harus berupa angka', // custom message
+           'no_kk.digits'=> 'Nomor KK minimal 16 digit', // custom message
+           'Gambar.mimes'=> 'Foto KK harus berformat jpg/jpeg/png', // custom message
         ])->validate();
 
         if (kk::where('no_kk','=',$request->input('no_kk'))->exists()) {

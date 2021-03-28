@@ -63,15 +63,25 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input id="email" type="email" class="form-control form-control-user" name="email" value="{{ old('email') }}" required autocomplete="email"
+                                    <input id="email" type="email" class="form-control form-control-user @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"
                                         placeholder="Email Address">
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input id="password" type="password" class="form-control form-control-user" name="password" required autocomplete="new-password" placeholder="Password">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input id="password-confirm" type="password" class="form-control form-control-user" name="password_confirmation" required autocomplete="new-password" placeholder="Repeat Password">
+                                        <input id="password-confirm" type="password" class="form-control form-control-user @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password" placeholder="Repeat Password">
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row mb-6">

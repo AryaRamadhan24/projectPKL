@@ -67,6 +67,12 @@ class bnController extends Controller
             'no_buku' => 'required|numeric|digits:7',
             'GambarSuami' => 'required|mimes:jpg,jpeg,png',
             'GambarIstri' => 'required|mimes:jpg,jpeg,png',
+        ],
+        [
+           'no_buku.numeric'=> 'Nomor Buku Nikah harus berupa angka', // custom message
+           'no_buku.digits'=> 'Nomor Buku Nikah minimal 16 digit', // custom message
+           'GambarSuami.mimes'=> 'Foto Buku Nikah Suami harus berformat jpg/jpeg/png', // custom message
+           'GambarIstri.mimes'=> 'Foto Buku Nikah Istri harus berformat jpg/jpeg/png', // custom message
         ])->validate();
 
         if (bn::where('no_buku','=',$request->input('no_buku'))->exists()) {
