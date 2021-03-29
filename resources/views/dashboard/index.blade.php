@@ -1,5 +1,6 @@
 @extends('master.master')
 @section('content')
+
 <div id="content">
     <!-- Begin Page Content -->
     <div class="row">
