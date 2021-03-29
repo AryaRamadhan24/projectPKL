@@ -23,6 +23,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{asset('Landingpage/css/style.css')}}" rel="stylesheet">
+  <link href="{{asset('Landingpage/css/chart.css')}}" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Regna - v2.2.1

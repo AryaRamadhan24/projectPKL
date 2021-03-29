@@ -1,4 +1,5 @@
 @extends('master.master')
+{{-- @extends('landing.css') --}}
 @section('content')
 
 <div id="content">
