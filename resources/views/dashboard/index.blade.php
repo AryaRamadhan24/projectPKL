@@ -368,7 +368,7 @@
     </div>
     @elseif (Auth::user()->level=='admin')
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header py-4">
             {{-- CHart --}}
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -378,7 +378,6 @@
                     <div id="ChartArsip"></div>
                 </div>
             </div>
-        <h6 class="m-0 font-weight-bold text-primary">Data</h6>
         </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -480,7 +479,7 @@
                         type: 'column'
                     },
                     title: {
-                        text: 'Grafik Data'
+                        text: 'Grafik E-Arsip'
                     },
                     xAxis: {
                         categories: {!!json_encode($categories)!!},
