@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -88,7 +89,39 @@ class HomeController extends Controller
         ->where('id_desa',$desaIdPetugas)
         ->get();
 
-        return view('dashboard.index',compact('admin','petugas','warga','wargaDesa','arsip','arsipAdmin','userData','ktp','kk','bn','ktp_petugas','kk_petugas','bn_petugas','namaDesa','arsipValidated','arsipProgress','user','kecamatan','desa'));
+        // $KategoriDesa = DB::table('desas')
+        // ->select('id_desa','nama_desa')
+        // ->get();
+
+        $KategoriKecamatan = DB::table('kecamatans')
+        ->select('id_kecamatan','nama_kecamatan')
+        ->get();
+
+        $KategoriKK = DB::table('kks')
+        ->select('no_kk')
+        ->get();
+
+        $categories= [];
+        $DataKK= [];
+        $DataKTP= [];
+        $DataBN= [];
+
+        // foreach ($KategoriDesa as $key) {
+        //     $categories[] = $key->nama_desa;
+        //     $DataKK[] = count(DB::table('kks')->join('users','users.id_user','kks.user_id')->where('users.desa_id',$key->id_desa)->get());
+        //     $DataKTP[] = count(DB::table('ktps')->join('users','users.id_user','ktps.user_id')->where('users.desa_id',$key->id_desa)->get());
+        //     $DataBN[] = count(DB::table('bns')->join('users','users.id_user','bns.user_id')->where('users.desa_id',$key->id_desa)->get());
+        // }
+        foreach ($KategoriKecamatan as $key) {
+            $categories[] = $key->nama_kecamatan;
+            $desaId = DB::table('desas')->where('kecamatan_id',$key->id_kecamatan)->first()->id_desa;
+            $DataKK[] = count(DB::table('kks')->join('users','users.id_user','kks.user_id')->where('users.desa_id',$desaId)->get());
+            $DataKTP[] = count(DB::table('ktps')->join('users','users.id_user','ktps.user_id')->where('users.desa_id',$desaId)->get());
+            $DataBN[] = count(DB::table('bns')->join('users','users.id_user','bns.user_id')->where('users.desa_id',$desaId)->get());
+        }
+        // dd($desaId);
+
+        return view('dashboard.index',compact('admin','petugas','warga','wargaDesa','arsip','arsipAdmin','userData','ktp','kk','bn','ktp_petugas','kk_petugas','bn_petugas','namaDesa','arsipValidated','arsipProgress','user','kecamatan','desa','categories','DataKK','DataKTP','DataBN'));
     }
 
     public function loginview()

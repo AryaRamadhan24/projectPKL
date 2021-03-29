@@ -370,16 +370,14 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             {{-- CHart --}}
-            {{-- <div class="card shadow mb-4">
+            <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Grafik Arsip Tiap Kecamatan</h6>
                 </div>
-                <div class="card-body">
-                    <div style="width: 500px;height: 500px">
-                        <canvas id="myChart"></canvas>
-                    </div>
+                <div class="chart">
+                    <div id="ChartArsip"></div>
                 </div>
-            </div> --}}
+            </div>
         <h6 class="m-0 font-weight-bold text-primary">Data</h6>
         </div>
     <div class="card shadow mb-4">
@@ -472,6 +470,61 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+
+@section('Chart')
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script>
+                Highcharts.chart('ChartArsip', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'Monthly Average Rainfall'
+                    },
+                    subtitle: {
+                        text: 'Source: WorldClimate.com'
+                    },
+                    xAxis: {
+                        categories: {!!json_encode($categories)!!},
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Jumlah Arsip'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        // pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        //     '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0
+                        }
+                    },
+                    series: [{
+                        name: 'Kartu Keluarga',
+                        data: {!!json_encode($DataKK)!!}
+
+                    }, {
+                        name: 'Kartu Tanda Penduduk',
+                        data: {!!json_encode($DataKTP)!!}
+
+                    }, {
+                        name: 'Buku Nikah',
+                        data: {!!json_encode($DataBN)!!}
+
+                    }]
+                });
+                </script>
+@endsection
 
 <script>
 $(document).ready(function() {

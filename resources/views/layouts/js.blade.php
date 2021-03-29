@@ -21,3 +21,6 @@
 
     <!-- Page level custom scripts -->
     <script src="{{asset('sbadmin2/js/demo/datatables-demo.js')}}"></script>
+
+    @yield('Chart')
+    <script src="https://code.highcharts.com/highcharts.js"></script>
