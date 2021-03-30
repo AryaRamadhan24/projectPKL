@@ -2,6 +2,8 @@
 @extends('layouts.css')
 @extends('landing.css')
 
+<link href="{{asset('Landingpage/img/favicon.png')}}" rel="icon">
+
 <body style="background-image: url(https://farm5.staticflickr.com/4340/36400422205_1f196452d0_o.png); background-color:rgba(0,0,0,0); background-repeat:no-repeat; background-size:100% 100%;" >
     <section id="abc">
     <div class="overlay">
