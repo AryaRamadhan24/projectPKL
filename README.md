@@ -1,4 +1,4 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+<p align="center"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fgithub.com%2Flaravel%2Flaravel&psig=AOvVaw3IbkjiSqixOAFKrduUHcXz&ust=1617187182772000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIjPqIDq1-8CFQAAAAAdAAAAABAD" width="400"></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -62,6 +62,11 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## API
+Link Kartu Keluarga : https://my-json-server.typicode.com/Gundho/testjson/kk
+Link Kartu Tanda Penduduk : https://my-json-server.typicode.com/AryaRamadhan24/ktpjson/ktp
+Link Buku Nikah : https://my-json-server.typicode.com/aliie25/BukuNikahJson/bn
 
 ## Security Vulnerabilities
 
