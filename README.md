@@ -64,9 +64,10 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
 ## API
-Link Kartu Keluarga : https://my-json-server.typicode.com/Gundho/testjson/kk
-Link Kartu Tanda Penduduk : https://my-json-server.typicode.com/AryaRamadhan24/ktpjson/ktp
-Link Buku Nikah : https://my-json-server.typicode.com/aliie25/BukuNikahJson/bn
+
+- Link Kartu Keluarga : https://my-json-server.typicode.com/Gundho/testjson/kk
+- Link Kartu Tanda Penduduk : https://my-json-server.typicode.com/AryaRamadhan24/ktpjson/ktp
+- Link Buku Nikah : https://my-json-server.typicode.com/aliie25/BukuNikahJson/bn
 
 ## Security Vulnerabilities
 
