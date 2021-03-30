@@ -14,6 +14,6 @@ return [
     */
 
     'failed' => 'Email atau Password Tidak Sesuai',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'throttle' => 'Terlalu banyak melakukan percobaan login. Harap tunggu :seconds menit.',
 
 ];
