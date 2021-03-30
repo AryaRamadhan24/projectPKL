@@ -102,24 +102,36 @@ class HomeController extends Controller
         ->get();
 
         $categories= [];
+        $DataKK2= 0;
+        $DataKTP2= 0;
+        $DataBN2= 0;
         $DataKK= [];
         $DataKTP= [];
         $DataBN= [];
 
-        // foreach ($KategoriDesa as $key) {
-        //     $categories[] = $key->nama_desa;
-        //     $DataKK[] = count(DB::table('kks')->join('users','users.id_user','kks.user_id')->where('users.desa_id',$key->id_desa)->get());
-        //     $DataKTP[] = count(DB::table('ktps')->join('users','users.id_user','ktps.user_id')->where('users.desa_id',$key->id_desa)->get());
-        //     $DataBN[] = count(DB::table('bns')->join('users','users.id_user','bns.user_id')->where('users.desa_id',$key->id_desa)->get());
-        // }
         foreach ($KategoriKecamatan as $key) {
             $categories[] = $key->nama_kecamatan;
-            $desaId = DB::table('desas')->where('kecamatan_id',$key->id_kecamatan)->first()->id_desa;
-            $DataKK[] = count(DB::table('kks')->join('users','users.id_user','kks.user_id')->where('users.desa_id',$desaId)->get());
-            $DataKTP[] = count(DB::table('ktps')->join('users','users.id_user','ktps.user_id')->where('users.desa_id',$desaId)->get());
-            $DataBN[] = count(DB::table('bns')->join('users','users.id_user','bns.user_id')->where('users.desa_id',$desaId)->get());
+            $desaId = DB::table('desas')->where('kecamatan_id',$key->id_kecamatan)->get();
+            foreach ($desaId as $key2) {
+                $id = $key2->id_desa;
+                // dd($id);
+                $DataKK1 = count(DB::table('kks')->join('users','users.id_user','kks.user_id')->where('users.desa_id',$id)->get());
+                $DataKTP1 = count(DB::table('ktps')->join('users','users.id_user','ktps.user_id')->where('users.desa_id',$id)->get());
+                $DataBN1 = count(DB::table('bns')->join('users','users.id_user','bns.user_id')->where('users.desa_id',$id)->get());
+
+                $DataKK2 += $DataKK1;
+                $DataKTP2 += $DataKTP1;
+                $DataBN2 += $DataBN1;
+            }
+            $DataKK[] = $DataKK2;
+            $DataKTP[] = $DataKTP2;
+            $DataBN[] = $DataBN2;
+
+            $DataKK2= 0;
+            $DataKTP2= 0;
+            $DataBN2= 0;
         }
-        // dd($desaId);
+        // dd($DataKK);
 
         return view('dashboard.index',compact('admin','petugas','warga','wargaDesa','arsip','arsipAdmin','userData','ktp','kk','bn','ktp_petugas','kk_petugas','bn_petugas','namaDesa','arsipValidated','arsipProgress','user','kecamatan','desa','categories','DataKK','DataKTP','DataBN'));
     }

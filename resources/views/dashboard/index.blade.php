@@ -1,5 +1,5 @@
 @extends('master.master')
-{{-- @extends('landing.css') --}}
+@extends('landing.css')
 @section('content')
 
 <div id="content">

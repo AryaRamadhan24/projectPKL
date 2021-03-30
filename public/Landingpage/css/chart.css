@@ -985,7 +985,7 @@
 
 
 /* Link the series colors to axis colors */
-.highcharts-color-0 {
+/* .highcharts-color-0 {
 	fill: #FFD700;
 	stroke: #FFD700;
 }
@@ -1018,4 +1018,4 @@
 
 .highcharts-yaxis .highcharts-axis-line {
 	stroke-width: 2px;
-}
+} */
