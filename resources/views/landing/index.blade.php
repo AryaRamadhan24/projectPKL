@@ -73,10 +73,10 @@
               <h4>Tri Darmawan S.</h4>
               <span>Pembimbing</span>
               <div class="social">
-                <a href="https://twitter.com/KominfoMalang?s=20"><i class="fa fa-twitter"></i></a>
-                <a href="https://www.facebook.com/kominfomalang/"><i class="fa fa-facebook"></i></a>
-                <a href="mailto:kominfo@malangkota.go.id"><i class="fa fa-google-plus"></i></a>
-                <a href="https://www.instagram.com/kominfomalang/"><i class="fa fa-instagram"></i></a>
+                <a href="https://twitter.com/KominfoKabMlg?s=20"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.facebook.com/kominfokabmalang/"><i class="fa fa-facebook"></i></a>
+                <a href="mailto:kominfo@malangkab.go.id"><i class="fa fa-google-plus"></i></a>
+                <a href="https://www.instagram.com/kominfomalangkab/"><i class="fa fa-instagram"></i></a>
                 <a href="https://wa.me/6281249572288"><i class="fa fa-whatsapp "></i></a>
               </div>
             </div>
@@ -84,7 +84,7 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="member" data-aos="fade-up" data-aos-delay="200">
-              <div class="pic"><img src="{{asset('Landingpage/img/Arya.jpg')}}" alt=""></div>
+              <div class="pic"><img src="{{asset('Landingpage/img/ARYAR.jpg')}}" alt=""></div>
               <h4>M. Arya Ramadhan</h4>
               <span>Project Manager</span>
               <div class="social">
@@ -99,7 +99,7 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="member" data-aos="fade-up" data-aos-delay="300">
-              <div class="pic"><img src="{{asset('Landingpage/img/Ali.jpeg')}}" alt=""></div>
+              <div class="pic"><img src="{{asset('Landingpage/img/ALIE.jpg')}}" alt=""></div>
               <h4>Saifur Rifqi Ali</h4>
               <span>Front-end Developer</span>
               <div class="social">
@@ -114,7 +114,7 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="member" data-aos="fade-up" data-aos-delay="400">
-              <div class="pic"><img src="{{asset('Landingpage/img/Gundho.jpeg')}}" alt=""></div>
+              <div class="pic"><img src="{{asset('Landingpage/img/GUNDHO.jpg')}}" alt=""></div>
               <h4>Miantoko Gundho P.N</h4>
               <span>Back-end Developer</span>
               <div class="social">

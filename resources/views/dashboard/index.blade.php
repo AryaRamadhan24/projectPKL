@@ -377,7 +377,25 @@
                     <h6 class="m-0 font-weight-bold text-primary">Grafik Arsip Tiap Kecamatan</h6>
                 </div>
                 <div class="chart">
-                    <div id="ChartArsip"></div>
+                    <div id="ChartKK"></div>
+                </div>
+            </div>
+            {{-- chart2 --}}
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Grafik Arsip Tiap Kecamatan</h6>
+                </div>
+                <div class="chart">
+                    <div id="ChartKTP"></div>
+                </div>
+            </div>
+            {{-- chart3 --}}
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Grafik Arsip Tiap Kecamatan</h6>
+                </div>
+                <div class="chart">
+                    <div id="ChartBN"></div>
                 </div>
             </div>
         </div>
@@ -476,16 +494,16 @@
 @section('Chart')
     <script src="https://code.highcharts.com/highcharts.js"></script>
         <script>
-                Highcharts.chart('ChartArsip', {
+                Highcharts.chart('ChartKK', {
                     chart: {
                         type: 'column'
                     },
                     title: {
-                        text: 'Grafik E-Arsip'
+                        text: 'Grafik Inputan Kartu Keluarga'
                     },
                     xAxis: {
-                        categories: {!!json_encode($categories)!!},
-                        crosshair: true
+                        categories: ['Kecamatan']
+                        // crosshair: true
                     },
                     yAxis: {
                         min: 0,
@@ -493,35 +511,90 @@
                             text: 'Jumlah Arsip'
                         }
                     },
-                    tooltip: {
-                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                        // pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        //     '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-                        footerFormat: '</table>',
-                        shared: true,
-                        useHTML: true
-                    },
-                    plotOptions: {
-                        column: {
-                            pointPadding: 0.2,
-                            borderWidth: 0
-                        }
-                    },
-                    series: [{
-                        name: 'Kartu Keluarga',
-                        data: {!!json_encode($DataKK)!!}
+                    series: (function() {
+                    var series = [],
+                        temp = {!!json_encode($categories)!!};
+                        temp2 = {!!json_encode($DataKK)!!};
 
-                    }, {
-                        name: 'Kartu Tanda Penduduk',
-                        data: {!!json_encode($DataKTP)!!}
+                    for (var i = 0; i < temp.length; i++) {
+                        series.push({
+                            name: temp[i],
+                            data: [temp2[i]]
+                        });
+                    }
 
-                    }, {
-                        name: 'Buku Nikah',
-                        data: {!!json_encode($DataBN)!!}
-
-                    }]
+                    return series;
+                }())
                 });
-                </script>
+        </script>
+        <script>
+            Highcharts.chart('ChartKTP', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Grafik Inputan Kartu Tanda Penduduk'
+                },
+                xAxis: {
+                    categories: ['Kecamatan']
+                    // crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Jumlah Arsip'
+                    }
+                },
+                series: (function() {
+                    var series = [],
+                        temp = {!!json_encode($categories)!!};
+                        temp2 = {!!json_encode($DataKTP)!!};
+
+                    for (var i = 0; i < temp.length; i++) {
+                        series.push({
+                            name: temp[i],
+                            data: [temp2[i]]
+                        });
+                    }
+
+                    return series;
+                }())
+            });
+        </script>
+        <script>
+            Highcharts.chart('ChartBN', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Grafik Inputan Buku Nikah'
+                },
+                xAxis: {
+                    categories: ['Kecamatan']
+                    // crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Jumlah Arsip'
+                    }
+                },
+                series: (function() {
+                    var series = [],
+                        temp = {!!json_encode($categories)!!};
+                        temp2 = {!!json_encode($DataBN)!!};
+
+                    for (var i = 0; i < temp.length; i++) {
+                        series.push({
+                            name: temp[i],
+                            data: [temp2[i]]
+                        });
+                    }
+
+                    return series;
+                }())
+            });
+    </script>
 @endsection
 
 <script>
