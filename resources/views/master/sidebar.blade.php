@@ -40,22 +40,28 @@
                 <a class="collapse-item" href="{{route('addkk')}}">Kartu Keluarga</a>
                 <a class="collapse-item" href="{{route('addktpview')}}">Kartu Tanda Penduduk</a>
                 <a class="collapse-item" href="{{route('addbn')}}">Buku Nikah</a>
+                @foreach($menu as $item)
+                <a class="collapse-item" href="{{route('indexMenu',['id'=>$item->id])}}">{{$item->nama_menu}}</a>
+                @endforeach
             </div>
         </div>
     </li>
     @endif
     @if (auth::user()->level=='petugas')
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#abc"
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#abcd"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-upload"></i>
             <span>Verifikasi</span>
         </a>
-        <div id="abc" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="abcd" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('kk')}}">Kartu Keluarga</a>
                 <a class="collapse-item" href="{{route('ktp')}}">Kartu Tanda Penduduk</a>
                 <a class="collapse-item" href="{{route('bn')}}">Buku Nikah</a>
+                @foreach($menu as $item)
+                <a class="collapse-item" href="{{route('indexIndex')}}">{{$item->nama_menu}}</a>
+                @endforeach
             </div>
         </div>
     </li>
@@ -96,6 +102,14 @@
             </div>
         </div>
     </li>
+    <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('menu')}}">
+            <i class="fas fa-home"></i>
+            <span>Daftar Form Tambahan</span></a>
+    </li>
+
+    <!-- Divider -->
     @endif
 
 

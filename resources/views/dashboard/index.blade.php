@@ -368,6 +368,53 @@
             </div>
         </div>
     </div>
+    @foreach($menu as $item)
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Kartu {{$item->nama_menu}}</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered display" id="dataTable2" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>{{$item->nama_input}}</th>
+                            <th>Status</th>
+                            <th>Pesan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Auth::user()->level=='user')
+                        @foreach($extra as $item)
+                        <tr>
+                            <td>{{$item->input}}</td>
+                            <td @if ($item->status=="valid")
+                                style="color:green;"
+                                @elseif ($item->status=="tidak valid")
+                                style="color:red;"
+                            @endif>{{$item->status}}</td>
+                            <td>{{$item->pesan}}</td>
+                        </tr>
+                        @endforeach
+                        @elseif (Auth::user()->level=='petugas')
+                        @foreach($extra_petugas as $item)
+                        <tr>
+                            <td>{{$item->input}}</td>
+                            <td @if ($item->status=="valid")
+                                style="color:green;"
+                                @elseif ($item->status=="tidak valid")
+                                style="color:red;"
+                            @endif>{{$item->status}}</td>
+                            <td>{{$item->pesan}}</td>
+                        </tr>
+                        @endforeach
+                        @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @endforeach
     @elseif (Auth::user()->level=='admin')
     <div class="card shadow mb-4">
         <div class="card-header py-4">
@@ -398,6 +445,16 @@
                     <div id="ChartBN"></div>
                 </div>
             </div>
+            @foreach ($menu as $item)
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Grafik Arsip Tiap Kecamatan</h6>
+                </div>
+                <div class="chart">
+                    <div id="Chart{{$item->id}}"></div>
+                </div>
+            </div>
+            @endforeach
         </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -475,6 +532,31 @@
                             <td>{{$item->id_desa}}</td>
                             <td>{{$item->nama_desa}}</td>
                             <td>{{$item->nama_kecamatan}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Form</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered display" id="dataTable4" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Nama Menu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($menu as $item3)
+                        <tr>
+                            <td>{{$item3->id}}</td>
+                            <td>{{$item3->nama_menu}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -595,6 +677,43 @@
                 }())
             });
     </script>
+    @foreach ($menu as $item)
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script>
+                Highcharts.chart('Chart{{$item->id}}', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'Grafik Inputan {{$item->nama_menu}}'
+                    },
+                    xAxis: {
+                        categories: ['Kecamatan']
+                        // crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Jumlah Arsip'
+                        }
+                    },
+                    series: (function() {
+                    var series = [],
+                        temp = {!!json_encode($categories)!!};
+                        temp2 = {!!json_encode($DataKK)!!};
+
+                    for (var i = 0; i < temp.length; i++) {
+                        series.push({
+                            name: temp[i],
+                            data: [temp2[i]]
+                        });
+                    }
+
+                    return series;
+                }())
+                });
+        </script>
+    @endforeach
 @endsection
 
 <script>

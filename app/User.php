@@ -45,4 +45,8 @@ class User extends Authenticatable
     {
         return $this-> hasMany('App\kk');
     }
+    public function extradata()
+    {
+        return $this-> hasMany('App\extradata');
+    }
 }

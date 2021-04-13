@@ -25,7 +25,10 @@ class profileController extends Controller
         ->select('id_user','name','email','password','Tempat_Lahir','Tanggal_Lahir','Alamat','No_Telp')
         ->get();
 
-        return view('profile.edit',compact('userData'));
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('profile.edit',compact('userData','menu'));
     }
 
     /**

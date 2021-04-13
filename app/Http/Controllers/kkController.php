@@ -20,12 +20,18 @@ class kkController extends Controller
         ->select('kks.no_kk','kks.updated_at')
         ->get();
 
-        return view('kk.index',compact('data'));
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('kk.index',compact('data','menu'));
     }
 
     public function add()
     {
-        return view('kk.tambah');
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('kk.tambah',compact('menu'));
     }
 
     public function kk($id)
@@ -71,7 +77,10 @@ class kkController extends Controller
             $anggota = $json[$key]['anggota'];
         }
 
-        return view('kk.edit',compact('data','nama','alamat','anggota'));
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('kk.edit',compact('data','nama','alamat','anggota','menu'));
     }
 
     public function store(Request $request)

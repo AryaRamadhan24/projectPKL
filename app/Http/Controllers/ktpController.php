@@ -20,12 +20,18 @@ class ktpController extends Controller
         ->select('ktps.NIK','ktps.updated_at')
         ->get();
 
-        return view('ktp.index',compact('data'));
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('ktp.index',compact('data','menu'));
     }
 
     public function add()
     {
-        return view('ktp.tambah');
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('ktp.tambah',compact('menu'));
     }
 
     public function ktp($id)
@@ -70,8 +76,11 @@ class ktpController extends Controller
             $pekerjaan = $json[$key]['pekerjaan'];
         }
 
+        $menu = DB::table('menus')
+        ->get();
+
         // dd($data);
-        return view('ktp.edit',compact('data','nama','jk','tempatLahir','tglLahir','gdr','agama','status','pekerjaan'));
+        return view('ktp.edit',compact('data','nama','jk','tempatLahir','tglLahir','gdr','agama','status','pekerjaan','menu'));
     }
 
     public function update(Request $request, $id)

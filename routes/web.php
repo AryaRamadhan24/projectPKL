@@ -37,6 +37,7 @@ Route::get('gambarkk/{id}', 'kkController@gambarkk')->name('gambarkk');
 Route::get('gambarktp/{id}', 'ktpController@gambarktp')->name('gambarktp');
 Route::get('gambarbnsuami/{id}', 'bnController@gambarbnsuami')->name('gambarbnsuami');
 Route::get('gambarbnistri/{id}', 'bnController@gambarbnistri')->name('gambarbnistri');
+Route::get('gambarExtra/{id}', 'menuController@gambarExtra')->name('gambarExtra');
 
 
 // KTP
@@ -101,3 +102,17 @@ Route::post('/storedesa', 'desaController@store')->name('storedesa');
 Route::get('/deletedesa/{id}', 'desaController@destroy')->name('deletedesa');
 Route::get('/editdesa/{id}', 'desaController@edit')->name('editdesa');
 Route::post('/updatedesa/{id}','desaController@update')->name('updatedesa');
+
+//Menu
+Route::get('/menu', 'menuController@index')->name('menu');
+Route::get('/IndexMenu/{id}', 'menuController@indexMenu')->name('indexMenu');
+Route::get('/IndexIndex', 'menuController@IndexIndex')->name('indexIndex');
+Route::get('/addmenu', 'menuController@create')->name('addmenu');
+Route::post('/storemenu', 'menuController@store')->name('storemenu');
+Route::post('/storeIndex/{id}', 'menuController@storeIndex')->name('storeIndex');
+Route::get('/deletemenu/{id}', 'menuController@destroy')->name('deletemenu');
+Route::get('/deleteIndex/{id}', 'menuController@destroyIndex')->name('deleteIndex');
+Route::get('/editmenu/{id}', 'menuController@edit')->name('editmenu');
+Route::get('/editIndex/{id}', 'menuController@editIndex')->name('editIndex');
+Route::post('/updatemenu/{id}','menuController@update')->name('updatemenu');
+Route::post('/verifyIndex/{id}', 'menuController@verify')->name('verifyIndex');

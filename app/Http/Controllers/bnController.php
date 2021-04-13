@@ -26,7 +26,11 @@ class bnController extends Controller
         ->where('bns.status','proses')
         ->select('bns.no_buku','bns.updated_at')
         ->get();
-        return view('bukunikah.index',compact('data'));
+
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('bukunikah.index',compact('data','menu'));
     }
 
     /**
@@ -36,7 +40,10 @@ class bnController extends Controller
      */
     public function add()
     {
-        return view('bukunikah.tambah');
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('bukunikah.tambah',compact('menu'));
     }
 
     public function bn($id)
@@ -143,7 +150,10 @@ class bnController extends Controller
             $tglMenikah = $json[$key]['Tanggal_Menikah'];
         }
 
-        return view('bukunikah.edit',compact('data','tglMenikah','data1','data2'));
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('bukunikah.edit',compact('data','tglMenikah','data1','data2','menu'));
     }
 
     /**

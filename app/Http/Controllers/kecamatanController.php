@@ -19,7 +19,10 @@ class kecamatanController extends Controller
         $data = DB::table('kecamatans')
         ->get();
 
-        return view('Kecamatan.index',compact('data'));
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('Kecamatan.index',compact('data','menu'));
     }
 
     /**
@@ -29,7 +32,10 @@ class kecamatanController extends Controller
      */
     public function create()
     {
-        return view('Kecamatan.tambah');
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('Kecamatan.tambah',compact('menu'));
     }
 
     /**
@@ -69,7 +75,10 @@ class kecamatanController extends Controller
         ->where('id_kecamatan',$id)
         ->get();
 
-        return view('Kecamatan.edit',compact('data'));
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('Kecamatan.edit',compact('data','menu'));
     }
 
     /**

@@ -26,7 +26,10 @@ class UserController extends Controller
         ->select('users.id_user','users.name','users.email','users.Tempat_Lahir','users.Tanggal_Lahir','users.Alamat','users.No_Telp','desas.nama_desa')
         ->get();
 
-        return view('user.indexadmin', compact('userData'));
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('user.indexadmin', compact('userData','menu'));
     }
 
     public function indexpetugas()
@@ -38,7 +41,10 @@ class UserController extends Controller
         ->select('users.id_user','users.name','users.email','users.Tempat_Lahir','users.Tanggal_Lahir','users.Alamat','users.No_Telp','desas.nama_desa')
         ->get();
 
-        return view('user.indexpetugas',compact('userData'));
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('user.indexpetugas',compact('userData','menu'));
     }
 
     public function indexuser()
@@ -50,7 +56,10 @@ class UserController extends Controller
         ->select('users.id_user','users.name','users.email','users.Tempat_Lahir','users.Tanggal_Lahir','users.Alamat','users.No_Telp','desas.nama_desa')
         ->get();
 
-        return view('user.indexuser',compact('userData'));
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('user.indexuser',compact('userData','menu'));
     }
 
     /**
@@ -63,7 +72,10 @@ class UserController extends Controller
 
         $kecamatan=kecamatan::pluck('nama_kecamatan','id_kecamatan');
 
-        return view('user.createuser',['kecamatan' => $kecamatan]);
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('user.createuser',['kecamatan' => $kecamatan],compact('menu'));
     }
 
     /**
@@ -125,7 +137,10 @@ class UserController extends Controller
         ->select('id_user','name','email','Tempat_Lahir','Tanggal_Lahir','desa_id','Alamat','No_Telp')
         ->get();
 
-        return view ('user.edituser',['kecamatan' => $kecamatan], compact('userData'));
+        $menu = DB::table('menus')
+        ->get();
+
+        return view ('user.edituser',['kecamatan' => $kecamatan], compact('userData','menu'));
     }
 
     /**

@@ -89,6 +89,9 @@ class HomeController extends Controller
         ->where('id_desa',$desaIdPetugas)
         ->get();
 
+        $menu = DB::table('menus')
+        ->get();
+
         // $KategoriDesa = DB::table('desas')
         // ->select('id_desa','nama_desa')
         // ->get();
@@ -131,9 +134,37 @@ class HomeController extends Controller
             $DataKTP2= 0;
             $DataBN2= 0;
         }
-        // dd($DataKK);
 
-        return view('dashboard.index',compact('admin','petugas','warga','wargaDesa','arsip','arsipAdmin','userData','ktp','kk','bn','ktp_petugas','kk_petugas','bn_petugas','namaDesa','arsipValidated','arsipProgress','user','kecamatan','desa','categories','DataKK','DataKTP','DataBN'));
+        // foreach ($menu as $key) {
+        //     $nama_variable
+        //     $DataKK2= 0;
+        //     $DataKK= [];        
+
+        //     foreach ($KategoriKecamatan as $key) {
+        //         $categories[] = $key->nama_kecamatan;
+        //         $desaId = DB::table('desas')->where('kecamatan_id',$key->id_kecamatan)->get();
+        //         foreach ($desaId as $key2) {
+        //             $id = $key2->id_desa;
+        //             // dd($id);
+        //             $DataKK1 = count(DB::table('kks')->join('users','users.id_user','kks.user_id')->where('users.desa_id',$id)->get());
+        //             $DataKK2 += $DataKK1;
+        //         }
+        //         $DataKK[] = $DataKK2;
+
+        //         $DataKK2= 0;
+        //     }
+        // }
+
+        $extra = DB::table('extradatas')->where('user_id', $userId)->get();
+
+        $extra_petugas = DB::table('extradatas')
+        ->where('status','!=', 'proses')
+        ->join('users','extradatas.user_id','users.id_user')
+        ->where('users.desa_id',$desaIdPetugas)
+        ->get();
+        // dd($extra_petugas);
+
+        return view('dashboard.index',compact('admin','petugas','warga','wargaDesa','arsip','arsipAdmin','userData','ktp','kk','bn','ktp_petugas','kk_petugas','bn_petugas','namaDesa','arsipValidated','arsipProgress','user','kecamatan','desa','categories','DataKK','DataKTP','DataBN','menu','extra','extra_petugas'));
     }
 
     public function loginview()

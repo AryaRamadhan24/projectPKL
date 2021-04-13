@@ -20,7 +20,10 @@ class desaController extends Controller
         ->select('desas.id_desa','desas.nama_desa','kecamatans.nama_kecamatan')
         ->get();
 
-        return view('Desa.index',compact('data'));
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('Desa.index',compact('data','menu'));
     }
 
     /**
@@ -33,7 +36,10 @@ class desaController extends Controller
         $data = DB::table('kecamatans')
         ->get();
 
-        return view('Desa.tambah',compact('data'));
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('Desa.tambah',compact('data','menu'));
     }
 
     /**
@@ -78,7 +84,10 @@ class desaController extends Controller
         $kecamatan = DB::table('kecamatans')
         ->get();
 
-        return view('Desa.edit',compact('data','kecamatan'));
+        $menu = DB::table('menus')
+        ->get();
+
+        return view('Desa.edit',compact('data','kecamatan','menu'));
     }
 
     /**
