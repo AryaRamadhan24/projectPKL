@@ -106,7 +106,7 @@ Route::post('/updatedesa/{id}','desaController@update')->name('updatedesa');
 //Menu
 Route::get('/menu', 'menuController@index')->name('menu');
 Route::get('/IndexMenu/{id}', 'menuController@indexMenu')->name('indexMenu');
-Route::get('/IndexIndex', 'menuController@IndexIndex')->name('indexIndex');
+Route::get('/IndexIndex/{id}', 'menuController@IndexIndex')->name('indexIndex');
 Route::get('/addmenu', 'menuController@create')->name('addmenu');
 Route::post('/storemenu', 'menuController@store')->name('storemenu');
 Route::post('/storeIndex/{id}', 'menuController@storeIndex')->name('storeIndex');

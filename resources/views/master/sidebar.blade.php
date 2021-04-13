@@ -60,7 +60,7 @@
                 <a class="collapse-item" href="{{route('ktp')}}">Kartu Tanda Penduduk</a>
                 <a class="collapse-item" href="{{route('bn')}}">Buku Nikah</a>
                 @foreach($menu as $item)
-                <a class="collapse-item" href="{{route('indexIndex')}}">{{$item->nama_menu}}</a>
+                <a class="collapse-item" href="{{route('indexIndex',['id'=>$item->id])}}">{{$item->nama_menu}}</a>
                 @endforeach
             </div>
         </div>

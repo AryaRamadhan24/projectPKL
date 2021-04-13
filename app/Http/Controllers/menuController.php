@@ -33,13 +33,14 @@ class menuController extends Controller
         return view('menu.tambahIndex',compact('data','menu'));
     }
 
-    public function indexIndex()
+    public function indexIndex($id)
     {
         $desaIdPetugas = Auth::user()->desa_id;
 
         $data = DB::table('extradatas')
         ->join('users','users.id_user','extradatas.user_id')
         ->where('users.desa_id',$desaIdPetugas)
+        ->where('extradatas.menu_id',$id)
         ->where('extradatas.status','proses')
         ->select('extradatas.input','extradatas.updated_at')
         ->get();
@@ -75,7 +76,7 @@ class menuController extends Controller
         $data->nama_input = $request->input('input1');
         $data->nama_inputGambar = $request->input('input2');
         $data->save();
-        return redirect()->route('indexIndex');
+        return redirect()->route('menu');
     }
 
     public function storeIndex(Request $request, $id)
@@ -94,7 +95,7 @@ class menuController extends Controller
             $data->save();
         }
         $data->save();
-        return redirect()->route('indexIndex');
+        return redirect()->route('indexIndex',['id'=>$id]);
     }
 
     /**
@@ -180,11 +181,17 @@ class menuController extends Controller
         $data = extradata::findOrFail($hapus);
         $data->delete();
 
-        return redirect()->route('indexIndex');
+        return redirect()->route('indexIndex',['id'=>$hapus]);
     }
 
     public function verify(Request $request, $id)
     {
+        $id_index = DB::table('extradatas')
+        ->where('id_extra',$id)
+        ->first();
+        $dataid = $id_index->menu_id;
+
+        // dd($id_index);
         switch ($request->input('action')) {
             case 'valid':
                 $data = \App\extradata::where('id_extra',$id)->first();
@@ -203,7 +210,7 @@ class menuController extends Controller
                 break;
         }
 
-        return redirect()->route('indexIndex');
+        return redirect()->route('indexIndex',['id'=>$dataid]);
     }
 
     public function gambarExtra($id)
