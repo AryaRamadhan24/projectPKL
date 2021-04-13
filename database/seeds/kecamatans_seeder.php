@@ -17,5 +17,11 @@ class kecamatans_seeder extends Seeder
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
+
+        DB::table('kecamatans')->insert([
+            'nama_kecamatan' => 'Turen',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now()
+        ]);
     }
 }

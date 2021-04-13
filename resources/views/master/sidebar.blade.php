@@ -103,10 +103,13 @@
         </div>
     </li>
     <hr class="sidebar-divider">
+    <div class="sidebar-heading">
+        Form
+    </div>
     <li class="nav-item">
         <a class="nav-link" href="{{url('menu')}}">
-            <i class="fas fa-home"></i>
-            <span>Daftar Form Tambahan</span></a>
+            <i class="fas fa-plus"></i>
+            <span>Input Form Baru</span></a>
     </li>
 
     <!-- Divider -->
