@@ -60,7 +60,7 @@ class menuController extends Controller
     {
         $menu = DB::table('menus')
         ->get();
-        return view('menu.tambah',compact('menu'));    
+        return view('menu.tambah',compact('menu'));
     }
 
     /**
@@ -81,11 +81,32 @@ class menuController extends Controller
 
     public function storeIndex(Request $request, $id)
     {
+
+        if (extradata::where('input','=',$request->input('input1'))->exists()) {
+            $status = DB::table('extradatas')->where('input',$request->input('input1'))->select('status')->first();
+            $status2 = $status->status;
+            if ($status2!='valid') {
+                //  = DB::table('extradatas')->where('input',$request->input('input1'))->first()->input;
+                $data3 = DB::table('extradatas')
+                ->where('input',$request->input('input1'))
+                ->first();
+                // dd($data3);
+                $hapus = $data3->id_extra;
+
+                $data3 = extradata::findOrFail($hapus);
+                $data3->delete();
+            }
+            else{
+                return redirect()->back()->with('alert','Data Ini Sudah di Validasi');
+            }
+        }
+
         $id_user = Auth::user()->id_user;
         $data=new \App\extradata;
         $data->input = $request->input('input1');
         $data->user_id = Auth::user()->id_user;
         $data->menu_id = $id;
+
         if($request->hasFile('Gambar')){
             $ext = $request->file('Gambar')->getClientOriginalExtension();
             $name = $request->input('input1').'.'.$ext;
@@ -124,7 +145,7 @@ class menuController extends Controller
         ->where('id',$id)
         ->get();
 
-        return view('menu.edit',compact('menu','data'));    
+        return view('menu.edit',compact('menu','data'));
     }
 
     public function editIndex($id)
@@ -167,7 +188,7 @@ class menuController extends Controller
         $data = menu::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('menu');    
+        return redirect()->route('menu');
     }
 
     public function destroyIndex($id)
@@ -175,7 +196,7 @@ class menuController extends Controller
         $data = DB::table('extradatas')
         ->where('input',$id)
         ->first();
-        
+
         $hapus = $data->id_extra;
 
         $data = extradata::findOrFail($hapus);
